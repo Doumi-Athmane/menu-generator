@@ -2,7 +2,7 @@ const route = require('express').Router();
 
 route.get('/', (req, res) => {
     // return tout les entrees de la table plats
-    res.end('test')
+    res.send('test')
 });
 
 route.post('/', (req, res) => {
@@ -10,11 +10,15 @@ route.post('/', (req, res) => {
 });
 
 route.get('/:id', (req, res) => {
-    // return table entry of id 
+    // deletes entry of id 
     res.send("requested id: " + req.params.id);
 });
 
-route.get('/not_recent', (req, res) => {
+route.get('/:id/ingrediants', (req, res) => {
+    // return all ingrediants of plat id
+})
+
+route.get('/unused', (req, res) => {
     // return table entries according to some constrains
 });
 

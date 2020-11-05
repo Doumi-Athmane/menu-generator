@@ -1,9 +1,12 @@
 const { port } = require('./config')
-const app = require('express')();
-const getRoutes = require('./routes')
+const express = require('express');
+const app = express();
+let getRoutes = require('./routes');
 
-getRoutes().forEach(e => {
-    app.use('/' + e.path, e.router)
-})
+app.use('/api', getRoutes());
+
+app.get('/', (req, res) => {
+    res.send('welcome to the home page');
+});
 
 app.listen(port, () => console.log('server started at ' + port))
