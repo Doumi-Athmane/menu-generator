@@ -1,15 +1,13 @@
 const mysql = require('mysql');
-const { host, user, password } = require('./config');
+const { host, user, password, db_port, database } = require('./config');
 
-let con = mysql.createConnection({
+let con = mysql.createPool({
     host,
     user,
-    password
-});
-
-con.connect(err => {
-    if (err) throw err;
-    console.log('connected to database.');
+    password,
+    database,
+    port: db_port,
+    connectionLimit: 10
 });
 
 module.exports = con;

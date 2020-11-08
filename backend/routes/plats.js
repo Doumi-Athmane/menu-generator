@@ -1,8 +1,12 @@
 const route = require('express').Router();
+const connection = require('../connection');
+const { plats } = require('../requets/select');
 
 route.get('/', (req, res) => {
     // return tout les entrees de la table plats
-    res.send('test')
+    connection.query(plats(), (err, results, fields) => {
+        res.send(JSON.stringify(results));
+    });
 });
 
 route.post('/', (req, res) => {

@@ -1,6 +1,4 @@
 module.exports = {
-    principals: () => `select * from plats where type='p'`,
-    desserts: () => `select * from plats where type='d'`,
-    entrees: () => `select * from plats where type='e'`,
-    menu: () => `select * from menu`,
+    plats: type => `select * from plats ${type? `where type='${type}'`: ''}`,
+    menu: date => `select * from menu ${date? `where date='${date}'`: ''}`,
 }
