@@ -14,7 +14,7 @@ module.exports = app => {
         let filename = path.basename(element).replace(ext, '');
         router.use('/' + filename, require(path.resolve(__dirname, element)));
     });
-    
+
     router.get('/', (req, res) => {
         res.send('test');
     });

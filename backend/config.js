@@ -1,5 +1,6 @@
-//require('dotenv')
-
 module.exports = {
-    port: 4000//env.PORT
+    port: process.env.PORT,
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD
 }
