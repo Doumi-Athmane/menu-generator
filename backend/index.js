@@ -1,6 +1,8 @@
-const { port } = require('./config')
+
 const express = require('express');
 const app = express();
+require('dotenv').config();
+const { port } = require('./config')
 let getRoutes = require('./routes');
 
 app.use('/api', getRoutes());
