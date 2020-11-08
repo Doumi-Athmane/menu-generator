@@ -161,7 +161,13 @@ insert into composer(idIngrediants, idPlat, quantite, unite) values
     (17, 30, 20, 'mL'),
     (18, 30, 4, 'Cuillères');
 
-
+/*Insertion d\'un admin*/
 insert into admins(nomAdmin, prenom, motDepasse) values ('Boss', 'Athmane', 'atlas@2020');
+
+/*Creation d\'un menu*/
+
+insert into menu(date) values ('2020-11-08');
+
+insert into contient(idPlat , idMenu) values (1,1),(2,1),(3,1),(11,1),(12,1),(13,1),(21,1),(22,1),(23,1);
   
         
