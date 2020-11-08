@@ -5,6 +5,7 @@ const { plats } = require('../requets/select');
 route.get('/', (req, res) => {
     // return tout les entrees de la table plats
     connection.query(plats(), (err, results, fields) => {
+        console.log(err, results, fields)
         res.send(JSON.stringify(results));
     });
 });
