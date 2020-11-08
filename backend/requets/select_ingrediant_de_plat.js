@@ -1,11 +1,7 @@
 module.exports = id => {
-    return `select *
-            from ingrediants 
-            natural join (
-                select * 
-                from plats p 
-                natural join composer c 
-                where idPlat=${id}
-            ) d 
+        return `select distinct i.*
+            from ingrediants i
+            natural join composer c 
+            ${id? `where idPlat=${id}`: ''} 
             order by idPlat`
 }
