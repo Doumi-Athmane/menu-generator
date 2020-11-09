@@ -1,6 +1,9 @@
-var ajouter_plat = (nom, type, prix) => {
+var ajouter_plat = (params) => {
 
-    return `insert into plats (nom, type, prix) values (${nom},${type},${prix})`
+    const { nom, type, prix } = params;
+
+    return `insert into plats (nom, type, prix) values ('${nom}','${type}',${prix})`
+
 
 }
 
