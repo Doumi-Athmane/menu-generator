@@ -166,7 +166,7 @@ insert into admins(nomAdmin, prenom, motDepasse) values ('Boss', 'Athmane', 'atl
 
 /*Creation d\'un menu*/
 
-insert into menu(date) values ('2020-11-08');
+insert into menu(date) values (CURDATE());
 
 insert into contient(idPlat , idMenu) values (1,1),(2,1),(3,1),(11,1),(12,1),(13,1),(21,1),(22,1),(23,1);
   

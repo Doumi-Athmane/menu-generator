@@ -1,101 +1,79 @@
 const route = require('express').Router();
 const connection = require('../connection');
-const { plats } = require('../requets/select');
-const ingrediantDePlat = require('../requets/select_ingrediant_de_plat');
-const ajouter = require('../requets/ajouter_plat');
-const supprimer = require('../requets/supprimer_plat')
-const bodyParser = require('body-parser');
+const { plats } = require('../requets/plat/select');
+const ingrediantDePlat = require('../requets/plat/select_ingrediant');
+const { ajouter_plat, ajouter_ingrediants_plat } = require('../requets/plat/ajouter');
 
-const jsonParser = bodyParser.json();
+const supprimer = require('../requets/plat/supprimer');
+
 
 
 
 //---------------------------------------------------------GET---------------------------------------------------
 route.get('/', (req, res) => {
     // return tout les entrees de la table plats
-    connection.query(plats(), (err, results, fields) => {
+
+    connection.query(plats(req.query.type), (err, results) => {
 
         //console.log(err, results, fields)
 
         if (err) {
             res.status(400);
-            res.send(JSON.stringify({ err }))
-        }
-
-        res.send(JSON.stringify(results));
+            res.json({ err })
+        } else res.json(results);
     });
 });
 
 
 route.get('/:id', (req, res) => {
-    // deletes entry of id
-    connection.query(plats() + " where idPlat=" + req.params.id, (err, results, fields) => {
+    // get plat by id
+    connection.query(plats() + " where idPlat=" + req.params.id, (err, results) => {
         if (err) {
             res.status(400);
-            res.send(JSON.stringify({ err }))
-        }
-        res.send(JSON.stringify(results[0]));
+            res.json({ err })
+        } else res.json(results[0]);
     });
 });
 
 route.get('/:id/ingrediants', (req, res) => {
     // return all ingrediants of plat id
-    connection.query(ingrediantDePlat(req.params.id), (err, results, fields) => {
+    connection.query(ingrediantDePlat(req.params.id), (err, results) => {
         if (err) {
             res.status(400);
-            res.send(JSON.stringify({ err }))
-        }
-        res.send(JSON.stringify(results));
+            res.json({ err })
+        } else res.json(results);
     });
-});
-
-route.get('/type/:type', (req, res) => {
-    //return all plat of one type 
-
-    const type = req.params.type;
-    connection.query(plats(type), (err, results, fields) => {
-        if (err) {
-            throw err;
-            res.status(400)
-        }
-        res.send(JSON.stringify(results));
-    })
-
-})
-
-route.get('/unused', (req, res) => {
-    // return table entries according to some constrains
 });
 
 
 
 //--------------------------------------------------POST-------------------------------------- 
-route.post('/', jsonParser, (req, res) => {
+route.post('/', (req, res) => {
     //Insert a plat 
-    const body = req.body;
+    const plat = req.body.plat;
 
-    connection.query(ajouter(body), (err, results) => {
+    connection.query(ajouter_plat(plat), (err, results) => {
 
         if (err) {
             res.status(400);
+            res.json({ err })
+        } else {
+            const ingrediants = req.body.ingrediants
+            connection.query(ajouter_ingrediants_plat(results.insertId, ingrediants), (err, resulats) => {
+                if (err) {
+                    res.status(400);
+                    res.json({ err })
 
-
-            //throw err;
-            res.send(JSON.stringify({ err }))
+                } else res.send(results)
+            })
         }
-        res.status(200).json({
-            data: results
-        });
-
-        //res.send(JSON.stringify({ msg: 'entry added successfully.' })) ----------Hadi man3ref w3lach ki nkhaliha tdir err ?!! ----- 
-
 
     })
 });
 
 //-----------------------------------------------------DELETE----------------------------------------------
 
-route.delete('/:id/del', (req, res) => {
+route.delete('/:id', (req, res) => {
     // delete plat with id 
 
     const id = req.params.id;
@@ -103,11 +81,8 @@ route.delete('/:id/del', (req, res) => {
     connection.query(supprimer(id), (err, results) => {
         if (err) {
             res.status(400)
-            res.send(JSON.stringify({ err }))
-        }
-        res.status(203).json({
-            status: 'supperssion :) '
-        })
+                .json({ err })
+        } else res.status(203).json({ status: 'supperssion :) ' })
     })
 });
 

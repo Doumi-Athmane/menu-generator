@@ -1,18 +1,16 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 require('dotenv').config();
 const { port } = require('./config')
 let getRoutes = require('./routes');
 
+app.use(bodyParser.json());
 
 app.use('/api', getRoutes());
 
 
 
-
-app.delete('/api', (req, res) => {
-    res.send('Deleted !')
-})
 
 
 app.get('/', (req, res) => {

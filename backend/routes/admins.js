@@ -1,20 +1,30 @@
 const router = require('express').Router();
 const connection = require('../connection');
-const { admin } = require('../requets/select')
+const { admin } = require('../requets/admin/select')
+const ajouter = require('../requets/admin/ajouter');
 
 router.get('/:id', (req, res) => {
     // get admin of id
     connection.query(admin(req.params.id), (err, results) => {
         if (err) {
             res.status(400);
-            res.send(JSON.stringify({err}))
+            res.json({ err })
         }
-        res.send(JSON.stringify(results[0]))
+        res.json(results[0])
     });
 });
 
 router.post('/', (req, res) => {
     // add new admin
+    const { nomAdmin, prenom, motDePasse } = req.body;
+    connection.query(ajouter(nomAdmin, prenom, motDePasse), (err, results) => {
+        if (err) {
+            res.status(400);
+            res.json({ err })
+        } else {
+            res.json(results)
+        }
+    });
 });
 
 router.get('/:id/menus', (req, res) => {

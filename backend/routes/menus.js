@@ -1,21 +1,34 @@
 const router = require('express').Router();
 const connection = require('../connection')
-const { menu } = require('../requets/select');
-const plats = require('../requets/select_plats_id_menu');
-const ingrediant_menu = require('../requets/ingrediants_from_menu')
-const route = require('./plats');
+const { menu } = require('../requets/menu/select');
+const plats = require('../requets/menu/select_plats');
+const ingrediant_menu = require('../requets/menu/select_ingrediants')
+const ajouter = require('../requets/menu/ajouter');
+
 
 
 //----------------------------------------------------GET-------------------------------------------------
 
 router.get('/', (req, res) => {
     // get all menus
-    connection.query(menu(), (err, results) => {
+    connection.query(menu(req.query), (err, results) => {
         if (err) {
             res.status(400);
-            res.send(JSON.stringify({ err }))
-        }
-        res.send(JSON.stringify(results))
+            res.json({ err })
+        } else res.json(results)
+    });
+});
+
+router.get('/', (req, res) => {
+    //menus entre deux date
+
+    connection.query(menubtw(req.query.date1, req.query.date2), (err, results) => {
+        console.log(req.query.date)
+        if (err) {
+            res.status(400);
+            res.json({ err })
+        } else res.json(results)
+
     });
 });
 
@@ -25,36 +38,23 @@ router.get('/:id', (req, res) => {
     connection.query(menu() + ' where idMenu=' + req.params.id, (err, results) => {
         if (err) {
             res.status(400);
-            res.send(JSON.stringify({ err }))
-        }
-        res.send(JSON.stringify(results[0]))
+            res.json({ err })
+        } else res.json(results[0])
     });
 });
+
 
 router.get('/:id/plats', (req, res) => {
     // get all plats of menu id
     connection.query(plats(req.params.id), (err, results) => {
         if (err) {
             res.status(400);
-            res.send(JSON.stringify({ err }))
-        }
-        res.send(JSON.stringify(results))
+            res.json({ err })
+        } else res.json(results)
     });
 });
 
-router.get('/date/:date', (req, res) => {
-    //get menu by date
-    const date = req.params.date;
 
-    connection.query(menu(date), (err, results) => {
-        if (err) {
-            res.status(400);
-            throw err;
-        }
-
-        res.send(JSON.stringify(results))
-    })
-});
 
 router.get('/:id/ingrediants', (req, res) => {
     //get ingrediants of menu 
@@ -63,10 +63,9 @@ router.get('/:id/ingrediants', (req, res) => {
     connection.query(ingrediant_menu(id), (err, results) => {
         if (err) {
             res.status(400);
-            throw err
-        }
+            res.json({ err })
 
-        res.send(JSON.stringify(results))
+        } else res.send(results)
     })
 
 })
@@ -74,7 +73,21 @@ router.get('/:id/ingrediants', (req, res) => {
 //-----------------------------------------------POST---------------------------------------
 
 router.post('/', (req, res) => {
-    // add new menu
+    connection.query(ajouter.menu(), (err, results) => {
+        if (err) {
+            res.status(400);
+            res.json({ err })
+
+        } else {
+            connection.query(ajouter.plats_menu(results.insertId, req.body), (err, results) => {
+                if (err) {
+                    res.status(400);
+                    res.json({ err })
+
+                } else res.send(results)
+            })
+        }
+    })
 });
 
 module.exports = router;

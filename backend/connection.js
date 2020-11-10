@@ -7,7 +7,8 @@ let con = mysql.createPool({
     password,
     database,
     port: db_port,
-    connectionLimit: 10
+    connectionLimit: 10,
+    timezone: 'utc'
 });
 
 module.exports = con;
