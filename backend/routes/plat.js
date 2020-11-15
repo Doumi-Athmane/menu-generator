@@ -35,7 +35,7 @@ route.get('/:id', (req, res) => {
     });
 });
 
-route.get('/:id/ingrediants', (req, res) => {
+route.get('/:id/ingrediant', (req, res) => {
     // return all ingrediants of plat id
     connection.query(ingrediantDePlat(req.params.id), (err, results) => {
         if (err) {

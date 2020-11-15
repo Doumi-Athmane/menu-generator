@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 
 //------------------------------------------------POST------------------------------------------------
 
-router.post('/add_ing', (req, res) => {
+router.post('/', (req, res) => {
     // store new ingrediant
     const nomIngrediant = req.body.nomIngrediant;
 

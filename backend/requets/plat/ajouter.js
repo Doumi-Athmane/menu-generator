@@ -2,7 +2,7 @@ const ajouter_plat = (params) => {
 
     const { nom, type, prix } = params;
 
-    return (`insert into plats (nom, type, prix) values ('${nom}','${type}',${prix})`)
+    return (`insert into plat (nom, type, prix) values ('${nom}','${type}',${prix})`)
 
 
 }
@@ -11,10 +11,10 @@ const ajouter_ingrediants_plat = (idPlat, params) => {
 
     const ingrediants = params;
 
-    var query = `insert into composer (idPlat ,idIngrediants,quantite,unite) values `;
+    var query = `insert into composer (idPlat ,idIngrediant,quantite,unite) values `;
 
     ingrediants.forEach(ing => {
-        query += `(${idPlat}, ${ing.idIngrediants},${ing.quantite},'${ing.unite}'),`
+        query += `(${idPlat}, ${ing.idIngrediant},${ing.quantite},'${ing.unite}'),`
 
     })
 

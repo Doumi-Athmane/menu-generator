@@ -2,7 +2,7 @@ var ajouter_ingrediant = (nomIngrediant) => {
 
 
 
-    return `insert into ingrediants (nomIngrediant) values ('${nomIngrediant}')`
+    return `insert into ingrediant (nomIngrediant) values ('${nomIngrediant}')`
 
 }
 

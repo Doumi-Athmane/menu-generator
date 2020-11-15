@@ -1,3 +1,3 @@
 module.exports = {
-        plats: type => `select * from plats ${type? `where type='${type}'`: ''}`
+        plats: type => `select * from plat ${type? `where type='${type}'`: ''}`
 }

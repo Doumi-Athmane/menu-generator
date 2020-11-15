@@ -44,7 +44,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-router.get('/:id/plats', (req, res) => {
+router.get('/:id/plat', (req, res) => {
     // get all plats of menu id
     connection.query(plats(req.params.id), (err, results) => {
         if (err) {
@@ -56,7 +56,7 @@ router.get('/:id/plats', (req, res) => {
 
 
 
-router.get('/:id/ingrediants', (req, res) => {
+router.get('/:id/ingrediant', (req, res) => {
     //get ingrediants of menu 
 
     const id = req.params.id
