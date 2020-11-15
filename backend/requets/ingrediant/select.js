@@ -1,3 +1,3 @@
 module.exports = {
-        ingrediants: id => `select * from ingrediants ${id? `where idIngrediants=${id}`: ''}`
+        ingrediants: id => `select * from ingrediant ${id? `where idIngrediant=${id}`: ''}`
 }

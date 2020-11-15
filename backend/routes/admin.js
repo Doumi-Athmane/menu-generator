@@ -27,11 +27,11 @@ router.post('/', (req, res) => {
     });
 });
 
-router.get('/:id/menus', (req, res) => {
+router.get('/:id/menu', (req, res) => {
     // return all menus of admin id
 })
 
-router.get('/:id/plats', (req, res) => {
+router.get('/:id/plat', (req, res) => {
     // return all plats of admin id
 })
 

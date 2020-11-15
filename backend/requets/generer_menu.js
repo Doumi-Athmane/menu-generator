@@ -1,5 +1,5 @@
 module.exports = (type, idPlats) => {
-        return `select * from plats
+        return `select * from plat
             where idPlat not in (
                 select idPlat from contient c natural join menu
                 where DATEDIFF(now(), date) < 7

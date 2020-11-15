@@ -1,5 +1,5 @@
-var supprimer_plat = (idPlats) => {
-    return `delete from plats where idPlat = ${idPlats}`
+var supprimer_plat = (idPlat) => {
+    return `delete from plat where idPlat = ${idPlat}`
 }
 
 module.exports = supprimer_plat;
