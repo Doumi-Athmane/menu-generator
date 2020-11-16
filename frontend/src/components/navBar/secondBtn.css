@@ -1,0 +1,23 @@
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 0, 0.363);
+}
+
+.button span {
+    margin: 7px 0;
+}
+
+.button h6 {
+    font-size: 10px;
+}
+
+.button img {
+    width: 20px;
+}
+

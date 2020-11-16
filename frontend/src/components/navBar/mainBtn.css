@@ -1,0 +1,34 @@
+.btn {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.363);
+}
+
+.btn > div {
+    display: flex;
+    align-items: stretch;
+    padding: 8px 0;
+}
+
+.btn > div > div {
+    flex: 1;
+}
+
+.btn > div > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    text-align: start;
+}
+
+div > hr {
+    padding: 0;
+    margin: 0;
+    margin-left: 70px;
+    width: 65px;
+
+}

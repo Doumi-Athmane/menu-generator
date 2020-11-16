@@ -1,0 +1,11 @@
+.user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 35px;
+}
+
+.user > h6 {
+    margin-top: 15px;
+}
