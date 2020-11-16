@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import './Plat.css'
+import './ListePlat.css'
 
 class Plat extends Component {
+    
+    
+    
+    state = {
+        
+        
+    }
     render() {
         return (
-            <div>
-                <p>&ensp;fjkldjfkldsj</p>
-                
+            <div className='elements'>
+               
+                <p>fdfdsfdsfds</p>
+                <p>fdfdsfdsfds</p>
             </div>
         );
     }

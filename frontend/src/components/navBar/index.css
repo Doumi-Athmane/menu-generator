@@ -1,0 +1,28 @@
+.NavBar {
+    width: 13vw;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ccc;
+    height: 100vh;
+}
+
+.UserColumn {
+    flex: 1;
+}
+
+.MenuColumn {
+    flex: 2;
+}
+
+.LogoutColumn {
+    flex: 1;
+}
+
+img { 
+    width: 40px
+}
+
+h6 {
+    margin: 0;
+    padding: 0;
+}

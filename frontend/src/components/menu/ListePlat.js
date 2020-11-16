@@ -7,21 +7,23 @@ import Plat from './Plat'
 class ListePlat extends Component {
     
     state = {
-        type :'entrees',
-        nom : 'entree1',
-        prix : ''
+        type :'entrees'
     }
 
     render() {
         return (
             <div className='listePlat'>
-                <div>
+                <div className='type'>
                    <h1>Nos {this.state.type} : </h1>
                 </div>
-            
-                <Plat/>
-                <br/>
-                <Plat/>
+
+                <div className = 'contenu'> 
+                   <Plat />
+                </div>
+                
+                
+                
+                
 
             </div>
         );

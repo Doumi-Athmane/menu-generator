@@ -1,8 +1,28 @@
-.ListePlat {
+.listePlat {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: baseline;
+    background-color: gray;
+    margin-top: 5px;
+    justify-content: flex-start;
 }
 
-.plat h1 {
+.type {
+    flex: 1;
+    margin-left: 25px;
+}
+
+.type h1 {
     font-size: 20px;
+}
+
+.contenu {
+    flex: 4;
+    display: flex;
+    flex-direction: row;
+}
+
+.elements {
+    flex: 1;
+    flex-flow: row wrap;
 }
