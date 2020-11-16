@@ -1,0 +1,43 @@
+.generer {
+    display: grid;
+    grid-template-columns: 50px auto auto auto auto auto 50px;
+    grid-template-rows: auto 65% auto;
+    height: 100vh;
+}
+
+.title {
+    grid-column: 1 / 8;
+}
+
+.entrees {
+    grid-column: 2;
+}
+
+.fork {
+    grid-column: 3;
+}
+
+.principal {
+    grid-column: 4;
+}
+
+.split > div {
+    float: left;
+    width: 45%;
+}
+
+.spoon {
+    grid-column: 5;
+}
+
+.desserts {
+    grid-column: 6;
+}
+
+.btns {
+    grid-column: 1 / 8;
+    grid-row: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

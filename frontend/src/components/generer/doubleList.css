@@ -1,0 +1,53 @@
+.doubleList {
+    border: 1px solid #000;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2px;
+    overflow: hidden;
+    align-items: stretch;
+    background-color: rgba(105, 105, 105, 0.363);
+}
+
+.mainTitle {
+    background-color: #fff;
+}
+
+.secondTitle {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #000;
+    background-color: #fff;
+}
+
+.secondTitle hr {
+    width: 0px;
+    margin: 0;
+    padding: 0;
+}
+
+.doubleList h3, .doubleList h4 {
+    margin: 0;
+}
+
+.lists {
+    display: flex;
+    justify-content: space-between;
+    height: 80%;
+    padding: 5px;
+    padding-top: 10px;
+    padding-right: 0;
+}
+
+.lists hr {
+    width: 0px;
+    margin: 0;
+    padding: 0;
+}
+
+.list1 {
+    width: 50%;
+    overflow: hidden;
+}
