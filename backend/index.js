@@ -9,7 +9,7 @@ let getRoutes = require('./routes');
 
 app.use(bodyParser.json());
 app.use(cors())
-app.use(jwt({ secret: JWT_SECRET, algorithms: ['HS256'] }).unless({path: ['/api/auth/login']}))
+//app.use(jwt({ secret: JWT_SECRET, algorithms: ['HS256'] }).unless({path: ['/api/auth/login']}))
 
 app.use('/api', getRoutes());
 

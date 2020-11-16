@@ -1,0 +1,19 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+.menu :nth-child(1) {
+    flex: 1;
+    background-color: blue;
+    border: 1px;
+    border-color: black;
+}
+
+.menu :nth-child(2) {
+    flex: 4;
+    background-color: black;
+    border: 1px;
+    border-color: black;
+}

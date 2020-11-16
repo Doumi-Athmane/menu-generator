@@ -1,10 +1,22 @@
 const ajouter_plat = (params) => {
 
-    const { nom, type, prix } = params;
+    const { nom, prix ,fixe} = params.plat;
 
-    return (`insert into plat (nom, type, prix) values ('${nom}','${type}',${prix})`)
+    return (`insert into plat (nom, prix, fixe) values ('${nom}',${prix},${fixe})`)
 
 
+}
+
+const ajouter_type_plat = (idPlat ,typee ,choixx) => {
+    const type = typee 
+    const choix = choixx
+    if(type == 'entree'){
+        return (`insert into entree (idPlat) values (${idPlat}) `)
+    } else if (type == 'principal') {
+        return (`insert into principal (idPlat,type) values (${idPlat},'${choix}') `)
+    } else if ( type == 'dessert'){
+        return (`insert into dessert (idPlat) values (${idPlat}) `)
+    }
 }
 
 const ajouter_ingrediants_plat = (idPlat, params) => {
@@ -23,4 +35,4 @@ const ajouter_ingrediants_plat = (idPlat, params) => {
 
 }
 
-module.exports = { ajouter_plat, ajouter_ingrediants_plat };
+module.exports = { ajouter_plat, ajouter_ingrediants_plat ,ajouter_type_plat };
