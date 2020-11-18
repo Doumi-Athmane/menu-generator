@@ -6,7 +6,7 @@ export default function List(props) {
     return (
         <div className="scroll">
             {
-                props.items.map(e => <Item name={e.name} />)
+                props.items.map(e => <Item name={e.name} model={props.model} key={e.key} />)
             }
         </div>
     )

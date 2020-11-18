@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import User from './user'
 import PageBtn from './mainBtn'
 import SettingsBtn from './secondBtn'
@@ -23,10 +24,10 @@ export default class NavBar extends Component {
                     <User name="admin"></User>
                 </div>
                 <div className="MenuColumn">
-                    <PageBtn icon={Generer} text="Generer"></PageBtn>
-                    <PageBtn icon={Menu} text="Menu"></PageBtn>
-                    <PageBtn icon={Plat} text="Plat"></PageBtn>
-                    <PageBtn icon={Ingrediant} text="Ingrediant"></PageBtn>
+                    <Link to="/"><PageBtn icon={Generer} text="Generer" /></Link>
+                    <Link to="/"><PageBtn icon={Menu} text="Menu" /></Link>
+                    <Link to="/plats"><PageBtn icon={Plat} text="Plat" /></Link>
+                    <Link to="/"><PageBtn icon={Ingrediant} text="Ingrediant" /></Link>
                 </div>
                 <div className="LogoutColumn">
                     <SettingsBtn icon={Parametres} text="Parametres" />
