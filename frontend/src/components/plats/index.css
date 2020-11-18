@@ -1,0 +1,18 @@
+.pagePlats {
+    display: flex;
+    flex-direction: column;
+    padding: 0 80px;
+}
+
+.pagePlats div {
+    flex: 1;
+}
+
+.btnCont a {
+    color: #303030;
+    background-color: #fafafa;
+    padding: 10px 25px;
+    float: right;
+    font-weight: normal;
+    border-radius: 15px;
+}
