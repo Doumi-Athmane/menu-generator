@@ -1,23 +1,11 @@
-import React, { Component } from 'react';
-import './ListePlat.css'
+import React from 'react';
+import "./Plat.css"
 
-class Plat extends Component {
-    
-    
-    
-    state = {
-        
-        
-    }
-    render() {
-        return (
-            <div className='elements'>
-               
-                <p>fdfdsfdsfds</p>
-                <p>fdfdsfdsfds</p>
-            </div>
-        );
-    }
+export default function Plat(props) {
+    return (
+        <div className="plat">
+            <p>{props.nom}...............{props.prix}</p>
+            
+        </div>
+    )
 }
-
-export default Plat;

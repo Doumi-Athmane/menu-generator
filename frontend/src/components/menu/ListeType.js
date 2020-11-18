@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import './ListePlat.css'
-import Plat from './Plat'
+import ListPlat from './ListPlat'
+
 
 
 
 class ListePlat extends Component {
     
-    state = {
-        type :'entrees'
-    }
+   
 
     render() {
         return (
             <div className='listePlat'>
-                <div className='type'>
-                   <h1>Nos {this.state.type} : </h1>
+                <div className='titleType'>
+                   <h1>Nos {this.props.type} : </h1>
                 </div>
 
                 <div className = 'contenu'> 
-                   <Plat />
+                   <ListPlat plats ={this.props.plat} />
                 </div>
                 
                 

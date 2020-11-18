@@ -1,0 +1,71 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    background-color: #FAFAFA;
+}
+
+.BigTitle {
+    flex: 1;
+}
+
+.BigTitle h1 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.SecondTitle {
+    flex: 3;
+    justify-items: center;
+}
+
+.SecondTitle h1 {
+    width: auto;
+    font-size: 30px;
+    color: #584949;
+    border-radius: solid 1px #575757;
+    box-shadow: #D5CFCF 1px 1px 4px;
+}
+
+.LesMenus {
+    flex: 9;
+    display: flex;
+    flex-direction: row;
+}
+
+.haja {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}
+
+.haja a {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin: 0%;
+    padding: 0%;
+    margin-bottom: 200px;
+}
+
+.haja a :hover {
+    background-color: #f5eeee;
+}
+
+.menus {
+    flex: 3;
+    margin: 0px;
+    padding: 0%;
+    justify-items: center;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.menus hr {
+    width: 180px;
+    margin-left: 300px;
+    height: 1.5px;
+    background-color: #979797;
+    box-shadow: #D5CFCF 1px 1px 4px;
+}

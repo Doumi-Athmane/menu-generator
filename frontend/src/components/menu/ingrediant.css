@@ -1,0 +1,17 @@
+.ingrediants {
+    height: 400px;
+    width: 100%;
+    overflow-y: scroll;
+    scrollbar-width: 0px;
+    /* padding-right: 40px;
+    /* Increase/decrease this value for cross-browser compatibility */
+    box-sizing: content-box;
+}
+
+.ing hr {
+    width: 180px;
+    height: 1.5px;
+    margin-left: 200px;
+    background-color: #979797;
+    box-shadow: #D5CFCF 1px 1px 4px;
+}

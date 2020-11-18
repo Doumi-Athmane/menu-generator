@@ -1,7 +1,38 @@
 import React, { Component } from 'react';
 import './index.css'
-import ListePlat from './ListePlat'
-class Menu extends Component {
+import Menu from '../menu'
+import Valider from './valider'
+import Refresh from './refresh'
+import Ingrediants from './ingrediants'
+
+
+
+
+const test1 = [
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+    {nom :'entree1' , prix : 200},
+
+    
+]
+
+
+class PageMenu extends Component {
+
 
 
     state = {
@@ -21,20 +52,18 @@ class Menu extends Component {
 
                 <div className ='contenue'>
                     <div className = 'cotéMenu'>
-
-                        <div className ='menu'>
-                            <ListePlat/>
-                            <ListePlat/>
-
-                        </div>
-
+                        <Menu/>
+                        
                         <div className ='valide'>
+                           <Valider/>
+                           <Refresh/>
                            
                         </div>
 
                     </div>
 
                     <div className ='ingrediant'>
+                        <Ingrediants ingrediants ={test1}/>
                     </div>
                     
                 </div>
@@ -47,4 +76,4 @@ class Menu extends Component {
     }
 }
 
-export default Menu;
+export default PageMenu;

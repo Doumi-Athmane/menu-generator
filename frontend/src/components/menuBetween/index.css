@@ -1,0 +1,45 @@
+.allpage {
+    display: flex;
+    flex-direction: column;
+    background-color: #FAFAFA;
+}
+
+.BigTitle {
+    flex: 1;
+}
+
+.BigTitle h1 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.calenders {
+    flex: 3;
+    display: flex;
+    flex-direction: row;
+}
+
+.calender1 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.calender1 h1 {
+    font-size: 20px;
+}
+
+.calender1 :nth-child(1) {
+    flex: 1;
+    margin: 0%;
+}
+
+.calender1 :nth-child(2) {
+    flex: 3;
+    margin: 0%;
+}
+
+.rechercher {
+    flex: 1;
+    border: solid black;
+}

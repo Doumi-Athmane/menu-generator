@@ -12,6 +12,10 @@ const tempEntrees = [
     {name: 'item5'},
     {name: 'item6'},
     {name: 'item7'},
+    {name: 'item7'},
+    {name: 'item7'},
+    {name: 'item7'},
+    {name: 'item7'},
 ];
 
 class Generer extends Component {
