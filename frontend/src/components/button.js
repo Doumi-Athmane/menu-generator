@@ -1,10 +1,10 @@
 import React from 'react'
 import './button.css'
 
-export default function Button({ label }) {
+export default function Button({ label, onClick }) {
     return (
-        <a href="google.com" className="myBtn">
+        <button className="myBtn" onClick={onClick}>
             {label}
-        </a>
+        </button>
     )
 }

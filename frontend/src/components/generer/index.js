@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { Modal } from 'react-overlays'
 import './index.css'
 import List from './listCont'
 import List2 from './doubleList'
 import Button from '../button'
-import Model from '../model'
+import Plat from './plat'
 import Fork from '../../assets/fork.svg'
 import Spoon from '../../assets/spoon.svg'
 
@@ -17,45 +18,45 @@ const tempEntrees = [
     {name: 'item7', key: 7},
 ];
 
-class Generer extends Component {
-    constructor(props) {
-        super(props);
-        this.model = React.createRef();
-        this.hide = this.hide.bind(this);
-    }
-    hide() {
-        this.model.current.style.display = 'none';
-    }
-    render() {
-        return (
-            <div className="generer">
-                <div className="title">
-                    <h2>Generer un menu</h2>
-                </div>
-                <div className="entrees">
-                    <List title="Entrees :" items={tempEntrees} model={this.model} />
-                </div>
-                <div className="barrier fork">
-                    <img src={Fork} alt="fork" />
-                </div>
-                <div className="principal">
-                    <List2 title="Principals :" items={tempEntrees} model={this.model} />
-                </div>
-                <div className="barrier spoon">
-                    <img src={Spoon} alt="spoon" /> 
-                </div>
-                <div className="desserts">
-                    <List title="Desserts :" items={tempEntrees} model={this.model} />
-                </div>
-                <div className="btns">
-                    <Button label="Generer Menu" />
-                </div>
-                <div className="hidden" ref={this.model} onClick={this.hide}>
-                    <Model title="Plat" />
-                </div>
+function Generer() {
+    const [show, setShow] = useState(false);
+
+    const Backdrop = props => (<div className="hidden" {...props}></div>)
+
+    return (
+        <div className="generer">
+            <div className="title">
+                <h2>Generer un menu</h2>
             </div>
-        )
-    }
+            <div className="entrees">
+                <List title="Entrees :" items={tempEntrees} model={setShow} />
+            </div>
+            <div className="barrier fork">
+                <img src={Fork} alt="fork" />
+            </div>
+            <div className="principal">
+                <List2 title="Principals :" items={tempEntrees} model={setShow} />
+            </div>
+            <div className="barrier spoon">
+                <img src={Spoon} alt="spoon" /> 
+            </div>
+            <div className="desserts">
+                <List title="Desserts :" items={tempEntrees} model={setShow} />
+            </div>
+            <div className="btns">
+                <Button label="Generer Menu" />
+            </div>
+            <Modal 
+                show={show}
+                onHide={() => setShow(false)}
+                renderBackdrop={Backdrop}
+                aria-labelledby="modal-label"
+                className="modal"
+            >
+                <Plat />
+            </Modal>
+        </div>
+    )
 }
 
 export default Generer;
