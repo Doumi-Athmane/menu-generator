@@ -62,7 +62,7 @@ class PageMenu extends Component {
 
                     </div>
 
-                    <div className ='ingrediant'>
+                    <div className ='ingrediantss'>
                         <Ingrediants ingrediants ={test1}/>
                     </div>
                     

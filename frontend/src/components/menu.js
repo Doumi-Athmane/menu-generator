@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Plats from './menu/ListeType'
+import Plats from './menue/ListeType'
+import './menue/index.css'
 
 const test = [
     {nom :'entree1' , prix : 200},

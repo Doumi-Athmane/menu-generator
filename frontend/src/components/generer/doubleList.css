@@ -1,5 +1,5 @@
 .doubleList {
-    border: 1px solid #000;
+    border: 1px solid #979797;
     border-radius: 12px;
     width: 100%;
     height: 100%;
@@ -8,7 +8,7 @@
     padding-bottom: 2px;
     overflow: hidden;
     align-items: stretch;
-    background-color: rgba(105, 105, 105, 0.363);
+    background-color: rgba(201, 186, 186, 0.32);
 }
 
 .mainTitle {
@@ -18,7 +18,7 @@
 .secondTitle {
     display: flex;
     justify-content: space-around;
-    border-bottom: 1px solid #000;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     background-color: #fff;
 }
 
@@ -44,7 +44,9 @@
 .lists hr {
     width: 0px;
     margin: 0;
+    margin-right: 10px;
     padding: 0;
+    border-right: #000 1px solid;
 }
 
 .list1 {

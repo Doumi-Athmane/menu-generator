@@ -25,13 +25,20 @@
     flex-direction: column;
 }
 
-.ingrediant {
+.ingrediantss {
     flex: 4;
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
 }
 
-.menu {
+.cotéMenu .menu {
     flex: 3;
-    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+    margin-left: 100px;
 }
 
 .valide {

@@ -30,5 +30,6 @@ div > hr {
     margin: 0;
     margin-left: 70px;
     width: 65px;
+    border-bottom: 0;
 
 }

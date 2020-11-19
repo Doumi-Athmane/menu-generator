@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './index.css'
+import './AfficherMenu.css'
 import Menu from '../menu'
 import left from '../../assets/left.svg'
 import right from '../../assets/right.svg'

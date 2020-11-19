@@ -1,6 +1,6 @@
 .generer {
     display: grid;
-    grid-template-columns: 50px auto auto auto auto auto 50px;
+    grid-template-columns: 50px 18% 70px auto 70px 18% 50px;
     grid-template-rows: auto 65% auto;
     height: 100vh;
 }
@@ -11,6 +11,11 @@
 
 .entrees {
     grid-column: 2;
+}
+
+
+.barrier {
+    margin: auto;
 }
 
 .fork {
@@ -40,4 +45,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.hidden {
+    position: fixed;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(100, 100, 100, 0.4);
+    padding-left: 28%;
+    padding-top: 10%;
 }
