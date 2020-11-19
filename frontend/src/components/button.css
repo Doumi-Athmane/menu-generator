@@ -11,10 +11,8 @@
 	font-weight:bold;
 	padding:16px 31px;
 	text-decoration:none;
+	outline: unset;
 }
 .myBtn:hover {
 	background-color:#a98585;
-}
-.myBtn:active {
-	position:relative;
 }

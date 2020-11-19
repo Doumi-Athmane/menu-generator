@@ -5,10 +5,10 @@ import Stop from '../../assets/stop.svg'
 
 export default function Item(props) {
     function click() {
-        props.model.current.style.display = "block";
+        props.model(true);
     }
     function click2(e) {
-        e.preventDefault();
+        e.stopPropagation();
         alert('yes')
     }
     return (

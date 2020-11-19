@@ -8,9 +8,7 @@
     flex: 1;
 }
 
-.btnCont a {
-    color: #303030;
-    background-color: #fafafa;
+.btnCont button {
     padding: 10px 25px;
     float: right;
     font-weight: normal;

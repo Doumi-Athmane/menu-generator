@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Modal from 'react-overlays/Modal'
 import Table from './tableau'
 import Button from '../button'
 import './index.css'
@@ -14,7 +15,12 @@ const tmpPlats = [
     {id: 8, nom: "salade", type: "dessert", prix: "500 DA"},
 ]
 
-export default function Plats(props) {
+export default function Plats() {
+
+    const [show, setShow] = useState(false);
+
+    const Backdrop = props => (<div className="hidden" {...props}></div>)
+
     return (
         <div className="pagePlats">
             <div>
@@ -22,8 +28,19 @@ export default function Plats(props) {
             </div>
             <Table plats={tmpPlats} />
             <div className="btnCont">
-                <Button label="Ajouter Nouveau" />
+                <Button label="Ajouter Nouveau" onClick={() => setShow(true)} />
             </div>
+            <Modal 
+                show={show}
+                onHide={() => setShow(false)}
+                renderBackdrop={Backdrop}
+                aria-labelledby="modal-label"
+                className="modal"
+            >
+                <div>
+                    <h3>This is something</h3>
+                </div>
+            </Modal>
         </div>
     )
 }
