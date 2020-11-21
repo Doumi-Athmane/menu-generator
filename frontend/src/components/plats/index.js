@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'react-overlays/Modal'
 import Table from './tableau'
 import Button from '../button'
+import Ajouter from './ajouter'
 import './index.css'
 
 const tmpPlats = [
@@ -37,9 +38,7 @@ export default function Plats() {
                 aria-labelledby="modal-label"
                 className="modal"
             >
-                <div>
-                    <h3>This is something</h3>
-                </div>
+                <Ajouter />
             </Modal>
         </div>
     )

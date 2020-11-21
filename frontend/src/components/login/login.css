@@ -1,0 +1,57 @@
+.cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.cont h3 {
+    margin-top: 50px;
+    margin-bottom: 0;
+    font-size: 40px;
+}
+
+.cont img {
+    width: 5%;
+}
+
+.cont > div:last-child {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cont form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 30%;
+    background-color: #ecd9d0ad;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    border: 1px solid #979797;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px #ccc;
+}
+
+.cont button {
+    padding: 10px 30px;
+    box-sizing: content-box;
+}
+
+.cont span {
+    margin: 15px;
+}
+
+.cont label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.cont input {
+    border-radius: 30px;
+    border: 1px solid #979797;
+    outline: unset;
+    padding: 7px 10px;
+    box-shadow: 2px 2px 3px #ccc;
+}
