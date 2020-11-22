@@ -3,6 +3,11 @@ import './index.css'
 import ChercherIng from './chercherIngrediant'
 import ListIngrediants from './listIngrediants'
 import AjouterIngrediant from './ajouterIngrediant'
+import axios from 'axios'
+
+const api = axios.create({
+    baseURL : `http://localhost:3500/api/ingrediant/`
+  })
 
 
 const ing =[
@@ -30,6 +35,14 @@ const ing =[
 ]
 
 class index extends Component {
+
+
+    supp = async (id) => {
+
+        var data = await api.delete(`/${id}`)
+
+    }
+
     render() {
         return (
             <div className='allpage'>
@@ -51,7 +64,7 @@ class index extends Component {
                         </div>
 
                         <div className='Elements'>
-                            <ListIngrediants ingrediants={ing}/>
+                            <ListIngrediants ingrediants={this.props.ingrediant}/>
                         </div>
 
                     </div>
@@ -60,7 +73,7 @@ class index extends Component {
 
                     </div>
                     <div className='ajouterIngrediant'>
-                        <AjouterIngrediant/>
+                        <AjouterIngrediant />
 
                     </div>
 

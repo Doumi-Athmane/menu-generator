@@ -8,7 +8,7 @@ export default function listIngrediants (props) {
         <div className='listtIngrediants'>
 
             {
-                props.ingrediants.map(e => <Ingrediant nom={e.nom} />)
+                props.ingrediants.map(e => <Ingrediant nom={e.nomIngrediant} id={e.idIngrediant} />)
             }
         </div>
 

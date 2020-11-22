@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';import Menu from './components/menu'
 import NavBar from './components/navBar'
 import Generer from './components/generer'
@@ -12,6 +13,13 @@ import Menue from './components/menue'
 import Rechercher from './components/menuBetween'
 import Ingredinat from './components/ingrediant'
 
+import axios from 'axios'
+import ingrediants from './components/menue/ingrediants';
+
+const api = axios.create({
+  baseURL : `http://localhost:3500/api/ingrediant`
+})
+
 const test_menuBetween = {
   id : 10,
   date : '2020-11-10',
@@ -19,7 +27,23 @@ const test_menuBetween = {
   date2 :'2020-11-20'
 }
 
-function App() {
+class App extends React.Component  {
+
+
+  state = {
+    ingrediants : []
+  }
+
+  constructor() {
+    super();
+
+    api.get('/').then (res => {
+      this.setState({ingrediants : res.data })
+    })
+
+  }
+
+render(){
   return (
     <Router>
       <div className="App">
@@ -32,7 +56,7 @@ function App() {
             <Rechercher/>
           </Route>
           <Route path="/ingrediant">
-            <Ingredinat/>
+            <Ingredinat ingrediant={this.state.ingrediants}/>
           </Route>
           <Route path="/menuBetween">
             <MenuBetween/>
@@ -47,6 +71,7 @@ function App() {
       </div>
     </Router>
   );
+}
 }
 
 export default App;

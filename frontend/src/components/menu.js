@@ -22,7 +22,8 @@ class menu extends Component {
     componentDidMount ()  {
             this.setState({
 
-                id : this.props.id
+                id : this.props.id 
+                
 
             }) 
     }
@@ -31,7 +32,7 @@ class menu extends Component {
         return (
             <div className ='menu'>
                             <br/>
-                            <Plats plat={test} type = {'entrees'}/>
+                            <Plats plat={test} type = {'entrees'} />
                             <hr/>
 
                             

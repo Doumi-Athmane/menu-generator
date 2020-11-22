@@ -45,7 +45,7 @@ function Generer() {
                 <List title="Desserts :" items={tempEntrees} model={setShow} />
             </div>
             <div className="btns">
-                <Button label="Generer Menu" />
+                <Button label="Generer Menu" link="/menuJour"/>
 
             </div>
             <Modal 
