@@ -18,6 +18,7 @@ const tempEntrees = [
     {name: 'item7', key: 7},
 ];
 
+
 function Generer() {
     const [show, setShow] = useState(false);
 
@@ -45,6 +46,7 @@ function Generer() {
             </div>
             <div className="btns">
                 <Button label="Generer Menu" />
+
             </div>
             <Modal 
                 show={show}

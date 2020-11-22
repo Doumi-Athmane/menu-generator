@@ -1,0 +1,42 @@
+.valider {
+    text-align: center;
+    justify-content: center;
+    width: 140px;
+    height: 45px;
+    display: flex;
+    border-radius: 30px;
+    margin-left: 260px;
+}
+
+.valider button {
+    flex: 1;
+    border-radius: 30px;
+    background-color: #E7E7E7;
+    border: solid 1px #979797;
+    font-weight: bold;
+    font-size: 17px;
+    box-shadow: #D5CFCF 5px 5px 6px;
+    cursor: pointer;
+}
+
+.valide .refresh {
+    text-align: center;
+    justify-content: center;
+    width: 140px;
+    height: 45px;
+    display: flex;
+    border-radius: 30px;
+    margin-left: 80px;
+}
+
+.refresh button {
+    flex: 1;
+    border-radius: 30px;
+    background-color: #593C3C;
+    border: solid 1px #979797;
+    font-weight: bold;
+    font-size: 17px;
+    color: white;
+    box-shadow: #D5CFCF 5px 5px 6px;
+    cursor: pointer;
+}

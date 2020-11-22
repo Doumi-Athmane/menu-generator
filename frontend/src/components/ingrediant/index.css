@@ -1,0 +1,73 @@
+.allpage {
+    display: flex;
+    flex-direction: column;
+    background-color: #FAFAFA;
+}
+
+.BigTitle {
+    flex: 1;
+}
+
+.BigTitle h1 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.contenu {
+    flex: 9;
+    display: flex;
+    flex-direction: row;
+}
+
+.listIngrediants {
+    flex: 7;
+    display: flex;
+    flex-direction: column;
+}
+
+.chercherIng {
+    flex: 2;
+}
+
+.Title {
+    flex: 1;
+    font-size: 10px;
+}
+
+.Elements {
+    flex: 8;
+    margin-top: 0%;
+    max-height: 450px;
+    overflow: hidden;
+    position: relative;
+}
+
+.ligne {
+    flex: 1;
+}
+
+.ligne hr {
+    /*border-left: 2px solid;*/
+    margin-top: 100px;
+    margin-right: 70px;
+    background-color: #979797;
+    box-shadow: #D5CFCF 1px 1px 5px;
+    display: inline-block;
+    height: 450px;
+    width: 1px;
+}
+
+.ajouterIngrediant {
+    flex: 7;
+    display: flex;
+    flex-direction: column;
+}
+
+.Title hr {
+    width: 240px;
+    margin-left: 190px;
+    height: 2.5px;
+    background-color: #979797;
+    box-shadow: #D5CFCF 2px 2px 4px;
+    align-self: flex-end;
+}

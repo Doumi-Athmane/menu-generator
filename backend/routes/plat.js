@@ -2,7 +2,7 @@ const route = require('express').Router();
 const connection = require('../connection');
 const { plats } = require('../requets/plat/select');
 const ingrediantDePlat = require('../requets/plat/select_ingrediant');
-const { ajouter_plat, ajouter_ingrediants_plat } = require('../requets/plat/ajouter');
+const { ajouter_plat, ajouter_ingrediants_plat , ajouter_type_plat} = require('../requets/plat/ajouter');
 
 const supprimer = require('../requets/plat/supprimer');
 
@@ -51,6 +51,8 @@ route.get('/:id/ingrediant', (req, res) => {
 route.post('/', (req, res) => {
     //Insert a plat 
     const plat = req.body.plat;
+    const type = req.body.type;
+    const choix = req.body.choix;
 
     connection.query(ajouter_plat(plat), (err, results) => {
 
@@ -58,14 +60,23 @@ route.post('/', (req, res) => {
             res.status(400);
             res.json({ err })
         } else {
-            const ingrediants = req.body.ingrediants
-            connection.query(ajouter_ingrediants_plat(results.insertId, ingrediants), (err, resulats) => {
+
+            connection.query(ajouter_type_plat(resulats.insertId,type,choix),(err,resulats)=> {
                 if (err) {
                     res.status(400);
                     res.json({ err })
+                }else {
+                    const ingrediants = req.body.ingrediants
+                    connection.query(ajouter_ingrediants_plat(results.insertId, ingrediants), (err, resulats) => {
+                    if (err) {
+                    res.status(400);
+                    res.json({ err })
 
-                } else res.send(results)
+                     } else res.send(results)
+                     })
+                }
             })
+            
         }
 
     })

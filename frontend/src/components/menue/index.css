@@ -1,0 +1,56 @@
+.menupage {
+    display: flex;
+    flex-direction: column;
+    background-color: #FAFAFA;
+}
+
+.BigTitle {
+    flex: 1;
+}
+
+.BigTitle h1 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.contenue {
+    flex: 9;
+    display: flex;
+    flex-direction: row;
+}
+
+.cotéMenu {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+}
+
+.ingrediantss {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
+}
+
+.cotéMenu .menu {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+    margin-left: 100px;
+}
+
+.valide {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.cotéMenu hr {
+    width: 180px;
+    margin-left: 300px;
+    height: 1.5px;
+    background-color: #979797;
+    box-shadow: #D5CFCF 1px 1px 4px;
+}

@@ -25,9 +25,9 @@ export default class NavBar extends Component {
                 </div>
                 <div className="MenuColumn">
                     <Link to="/"><PageBtn icon={Generer} text="Generer" /></Link>
-                    <Link to="/"><PageBtn icon={Menu} text="Menu" /></Link>
+                    <Link to="/menu"><PageBtn icon={Menu} text="Menu" /></Link>
                     <Link to="/plats"><PageBtn icon={Plat} text="Plat" /></Link>
-                    <Link to="/"><PageBtn icon={Ingrediant} text="Ingrediant" /></Link>
+                    <Link to="/ingrediant"><PageBtn icon={Ingrediant} text="Ingrediant" /></Link>
                 </div>
                 <div className="LogoutColumn">
                     <SettingsBtn icon={Parametres} text="Parametres" />

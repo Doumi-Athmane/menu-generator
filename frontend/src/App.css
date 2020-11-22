@@ -1,11 +1,11 @@
 .App {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  text-align: center;
-  background-color: #fafafa;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    text-align: center;
+    background-color: #fafafa;
 }
 
 a {
-  color: unset;
-  text-decoration: unset;
+    color: unset;
+    text-decoration: unset;
 }

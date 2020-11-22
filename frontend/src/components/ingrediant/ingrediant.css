@@ -1,0 +1,27 @@
+.ingrediant {
+    width: auto;
+    height: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.ingrediant p {
+    flex: 3;
+    font-size: 18px;
+}
+
+.ingrediant a {
+    width: 20px;
+    height: 20px;
+    margin-top: 20px;
+    margin-right: 50px;
+}
+
+.ingrediant a img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

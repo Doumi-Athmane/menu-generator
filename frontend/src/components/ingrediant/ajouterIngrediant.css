@@ -1,0 +1,58 @@
+.AjouterPage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ajouterIng {
+    flex: 1;
+    margin-right: 200px;
+}
+
+.ajouterIng h1 {
+    font-size: 23px;
+}
+
+.ajouterIng hr {
+    width: 170px;
+    margin-left: 85px;
+    height: 2.5px;
+    background-color: #979797;
+    box-shadow: #D5CFCF 2px 2px 4px;
+    align-self: flex-end;
+}
+
+.inputIng {
+    flex: 4;
+    margin-top: 65px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputIng div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.inputIng p {
+    font-size: 21px;
+    margin-right: 100px;
+}
+
+.inputIng input {
+    width: 280px;
+    height: 50px;
+    margin-right: 80px;
+    margin-top: 20px;
+    border: solid 0.5px #979797;
+    box-shadow: #837a7a 2px 2px 4px;
+}
+
+.btnAjouter {
+    flex: 3;
+}
+
+.btnAjouter :nth-child(1) {
+    margin-right: 80px;
+}

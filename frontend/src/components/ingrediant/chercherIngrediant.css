@@ -1,0 +1,42 @@
+.All {
+    border: 1px solid #a19e9e;
+    border-radius: 20px;
+    width: 260px;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    box-shadow: 1px 1px 5px #979797;
+    margin-left: 180px;
+    margin-top: 30px;
+    background-color: white;
+}
+
+input {
+    height: 55px;
+    width: 230px;
+    border: none;
+    padding: 0%;
+    margin: 0%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    outline-width: 0;
+    font-size: 15px;
+}
+
+.All a {
+    margin-top: 15px;
+    margin-right: 20px;
+}
+
+a img :hover {
+    box-shadow: 1px 1px 5px #979797;
+}
+
+.All img {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
