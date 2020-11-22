@@ -10,7 +10,6 @@ class ajouterIngrediant extends Component {
     }
 
     render() {
-        console.log(this.state.nom)
 
         return (
             <div className='AjouterPage'>

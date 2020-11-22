@@ -17,11 +17,12 @@
 .item:active {
     border: 1px solid #000;
 }
+
 .item:focus {
     outline: unset;
 }
 
-.item > button {
+.item>button {
     height: 25px;
     width: 25px;
     padding: 0;
@@ -30,6 +31,6 @@
     outline: unset;
 }
 
-.item > button > img {
-    width: 100%;
+.item>button>img {
+    width: 25px;
 }

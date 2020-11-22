@@ -21,11 +21,11 @@ class ListCont extends Component {
                 </div>
                 <div className="lists">
                     <div className="list1">
-                        <List items={this.props.items} model={this.props.model} />
+                        <List items={this.props.items.filter(e => e.type === "poulet")} model={this.props.model} />
                     </div>
                     <hr />
                     <div className="list1">
-                        <List items={this.props.items} model={this.props.model} />
+                        <List items={this.props.items.filter(e => e.type === "viande")} model={this.props.model} />
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-module.exports = (type, idPlats ,choix) => {
+module.exports = (type, idPlats) => {
       /*  return `select * from plat
             where idPlat not in (
                 select idPlat from contient c natural join menu

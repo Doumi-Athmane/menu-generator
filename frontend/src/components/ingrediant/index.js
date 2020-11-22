@@ -3,33 +3,31 @@ import './index.css'
 import ChercherIng from './chercherIngrediant'
 import ListIngrediants from './listIngrediants'
 import AjouterIngrediant from './ajouterIngrediant'
+import {list_ingrediants , supp_ingrediant} from '../../requests/ingrediant'
 
-
-const ing =[
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant2'},
-    {nom  : 'ingrediant3'},
-    {nom  : 'ingrediant4'},
-    {nom  : 'ingrediant5'},
-    {nom  : 'ingrediant6'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-    {nom  : 'ingrediant1'},
-]
 
 class index extends Component {
+
+    state = {
+            Les_ingrediants : []
+           }
+                
+    constructor() {
+        super()
+        let GetIng = async () => {
+            this.setState({ Les_ingrediants : await list_ingrediants()})    
+        }  
+       GetIng()
+       this.deleteIng = this.deleteIng.bind(this)
+    }
+
+    deleteIng(id) {
+        console.log("hee")
+        this.setState({Les_ingrediants: this.state.Les_ingrediants.filter(e => e.idIngrediant !== id)})
+    }
+
+  
+
     render() {
         return (
             <div className='allpage'>
@@ -51,7 +49,7 @@ class index extends Component {
                         </div>
 
                         <div className='Elements'>
-                            <ListIngrediants ingrediants={ing}/>
+                            <ListIngrediants ingrediants={this.state.Les_ingrediants} delete={this.deleteIng} />
                         </div>
 
                     </div>
@@ -60,7 +58,7 @@ class index extends Component {
 
                     </div>
                     <div className='ajouterIngrediant'>
-                        <AjouterIngrediant/>
+                        <AjouterIngrediant />
 
                     </div>
 

@@ -9,28 +9,56 @@ import Ingrediants from './ingrediants'
 
 
 const test1 = [
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
+    {nom :'Ingredian1' },
+    {nom :'Ingrediant2'},
+    {nom :'Ingrediant3' },
+    {nom :'Ingrediant4' },
+    {nom :'Ingrediant5' },
+    {nom :'Ingrediant6' },
+    {nom :'Ingrediant7' },
+    {nom :'Ingrediant8'},
+    {nom :'Ingredian1' },
+    {nom :'Ingrediant2'},
+    {nom :'Ingrediant3' },
+    {nom :'Ingrediant4' },
+    {nom :'Ingrediant5' },
+    {nom :'Ingrediant6' },
+    {nom :'Ingrediant7' },
+    {nom :'Ingrediant8'},
+    
 
     
 ]
 
+const entrees =[
 
+    {nom :'entree1' , prix : 200},
+    {nom :'entree2' , prix : 200},
+    {nom :'entree3' , prix : 200},
+    {nom :'entree4' , prix : 200},
+    {nom :'entree5' , prix : 200},
+    {nom :'entree6' , prix : 200},
+
+]
+
+
+const principals = [
+    {nom :'principal1' , prix : 200},
+    {nom :'principal2 ' , prix : 200},
+    
+
+]
+
+
+const desserts = [
+    {nom :'dssrt1' , prix : 200},
+    {nom :'dssrt2' , prix : 200},
+    {nom :'dssrt3' , prix : 200},
+    {nom :'dssrt4' , prix : 200},
+    {nom :'dssrt5' , prix : 200},
+    {nom :'dssrt6' , prix : 200},
+
+]
 class PageMenu extends Component {
 
 
@@ -52,7 +80,7 @@ class PageMenu extends Component {
 
                 <div className ='contenue'>
                     <div className = 'cotéMenu'>
-                        <Menu/>
+                        <Menu entree ={entrees} principal={principals} dessert={desserts}/>
                         
                         <div className ='valide'>
                            <Valider/>
