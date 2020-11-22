@@ -1,8 +1,10 @@
-import React from 'react';
-import './App.css';import Menu from './components/menu'
+import React, { useState } from 'react'
+import './App.css';
+import Menu from './components/menu'
 import NavBar from './components/navBar'
 import Generer from './components/generer'
 import Plats from './components/plats'
+import Login from './components/login'
 import { 
   BrowserRouter as Router, 
   Route, 
@@ -27,23 +29,29 @@ const test_menuBetween = {
   date2 :'2020-11-20'
 }
 
-class App extends React.Component  {
+// <<<<<<< HEAD
+// class App extends React.Component  {
 
 
-  state = {
-    ingrediants : []
-  }
+//   state = {
+//     ingrediants : []
+//   }
 
-  constructor() {
-    super();
+//   constructor() {
+//     super();
 
-    api.get('/').then (res => {
-      this.setState({ingrediants : res.data })
-    })
+//     api.get('/').then (res => {
+//       this.setState({ingrediants : res.data })
+//       //setIngrediants(res.data)
+//     })
 
-  }
+//   }
 
-render(){
+// render(){
+// =======
+
+function App() {
+
   return (
     <Router>
       <div className="App">
@@ -52,11 +60,14 @@ render(){
           <Route path="/plats">
             <Plats />
           </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
           <Route path="/menu">
             <Rechercher/>
           </Route>
           <Route path="/ingrediant">
-            <Ingredinat ingrediant={this.state.ingrediants}/>
+            <Ingredinat ingrediant={ingrediants}/>
           </Route>
           <Route path="/menuBetween">
             <MenuBetween/>
@@ -72,6 +83,6 @@ render(){
     </Router>
   );
 }
-}
+
 
 export default App;

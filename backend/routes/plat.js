@@ -1,6 +1,7 @@
 const route = require('express').Router();
 const connection = require('../connection');
 const { plats } = require('../requets/plat/select');
+const platsNotInMenu = require('../requets/plat/select_not_in_menu');
 const ingrediantDePlat = require('../requets/plat/select_ingrediant');
 const { ajouter_plat, ajouter_ingrediants_plat , ajouter_type_plat} = require('../requets/plat/ajouter');
 
@@ -15,8 +16,6 @@ route.get('/', (req, res) => {
 
     connection.query(plats(req.query.type), (err, results) => {
 
-        //console.log(err, results, fields)
-
         if (err) {
             res.status(400);
             res.json({ err })
@@ -24,6 +23,34 @@ route.get('/', (req, res) => {
     });
 });
 
+route.get('/menu', (req, res) => {
+    connection.query(platsNotInMenu('entree'), (err , results1)=>{
+        if (err) {
+            res.status(400);
+            res.json({err})
+        }else {
+            connection.query(platsNotInMenu('principal'),(err,results2)=>{
+                if (err) {
+                    res.status(400);
+                    res.json({err});
+                }else {
+                    connection.query(platsNotInMenu('dessert'),(err,results3)=>{
+                        if (err) {
+                            res.status(400);
+                            res.json({err})
+                        }else {
+                            res.json({
+                                entree : results1,
+                                principal : results2,
+                                dessert : results3
+                            })
+                        }
+                    })
+                }
+            })
+        }
+    })
+})
 
 route.get('/:id', (req, res) => {
     // get plat by id
@@ -34,6 +61,8 @@ route.get('/:id', (req, res) => {
         } else res.json(results[0]);
     });
 });
+
+
 
 route.get('/:id/ingrediant', (req, res) => {
     // return all ingrediants of plat id

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Modal from 'react-overlays/Modal'
 import Table from './tableau'
 import Button from '../button'
+import Ajouter from './ajouter'
+import plat from '../../requests/plat'
 import './index.css'
 
 const tmpPlats = [
@@ -18,6 +20,11 @@ const tmpPlats = [
 export default function Plats() {
 
     const [show, setShow] = useState(false);
+    const [plats, setPlats] = useState([]);
+
+   /* useEffect(() => {
+        
+    })*/
 
     const Backdrop = props => (<div className="hidden" {...props}></div>)
 
@@ -37,9 +44,7 @@ export default function Plats() {
                 aria-labelledby="modal-label"
                 className="modal"
             >
-                <div>
-                    <h3>This is something</h3>
-                </div>
+                <Ajouter />
             </Modal>
         </div>
     )

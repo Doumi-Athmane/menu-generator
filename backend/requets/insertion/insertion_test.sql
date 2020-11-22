@@ -162,7 +162,7 @@ insert into composer(idIngrediants, idPlat, quantite, unite) values
     (18, 30, 4, 'Cuillères');
 
 /*Insertion d\'un admin*/
-insert into admins(nomAdmin, prenom, motDepasse) values ('Boss', 'Athmane', 'atlas@2020');
+insert into admin(nomAdmin, prenom, motDepasse) values ('Boss', 'Athmane', 'atlas@2020');
 
 /*Creation d\'un menu*/
 

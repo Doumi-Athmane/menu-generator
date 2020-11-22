@@ -64,4 +64,6 @@
     width: 30%;
     height: 60%;
     background-color: white;
+    border-radius: 10px;
+    outline: unset;
 }

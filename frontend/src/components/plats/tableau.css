@@ -16,6 +16,10 @@
     align-items: center;
 }
 
+.grid th:nth-child(4), .grid th:nth-child(5) {
+    width: 40px;
+}
+
 .grid button {
     border: unset;
     outline: unset;

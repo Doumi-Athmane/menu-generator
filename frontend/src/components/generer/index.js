@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal } from 'react-overlays'
 import './index.css'
 import List from './listCont'
 import List2 from './doubleList'
 import Button from '../button'
 import Plat from './plat'
+import getPlat from '../../requests/generer'
 import Fork from '../../assets/fork.svg'
 import Spoon from '../../assets/spoon.svg'
 
@@ -21,6 +22,20 @@ const tempEntrees = [
 
 function Generer() {
     const [show, setShow] = useState(false);
+    const [entree, setEntree] = useState([])
+    const [principal, setPrincipal] = useState([])
+    const [dessert, setDessert] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+            const plats = await getPlat()
+
+            setEntree(plats.entree)
+            setPrincipal(plats.principal)
+            setDessert(plats.dessert)
+        }
+        fetchData().catch(() => {})
+    }, [])
 
     const Backdrop = props => (<div className="hidden" {...props}></div>)
 
@@ -30,19 +45,19 @@ function Generer() {
                 <h2>Generer un menu</h2>
             </div>
             <div className="entrees">
-                <List title="Entrees :" items={tempEntrees} model={setShow} />
+                <List title="Entrees :" items={entree} model={setShow} />
             </div>
             <div className="barrier fork">
                 <img src={Fork} alt="fork" />
             </div>
             <div className="principal">
-                <List2 title="Principals :" items={tempEntrees} model={setShow} />
+                <List2 title="Principals :" items={principal} model={setShow} />
             </div>
             <div className="barrier spoon">
                 <img src={Spoon} alt="spoon" /> 
             </div>
             <div className="desserts">
-                <List title="Desserts :" items={tempEntrees} model={setShow} />
+                <List title="Desserts :" items={dessert} model={setShow} />
             </div>
             <div className="btns">
                 <Button label="Generer Menu" link="/menuJour"/>

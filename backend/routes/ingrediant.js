@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const connection = require('../connection');
 const { ingrediants } = require('../requets/ingrediant/select');
-
+const supprimer = require('../requets/ingrediant/supprimer');
 const ajouter_ingrediant = require('../requets/ingrediant/ajouter')
 
 //----------------------------------------------GET---------------------------------------------------------------
@@ -41,6 +41,22 @@ router.post('/', (req, res) => {
         } else res.status(200).json({ data: results });
     })
 
+});
+
+
+//----------------------------------------------DELETE-------------------------------------------------
+
+router.delete('/:id', (req, res) => {
+    // delete ingrediant with id 
+
+    const id = req.params.id;
+
+    connection.query(supprimer(id), (err, results) => {
+        if (err) {
+            res.status(400)
+                .json({ err })
+        } else res.status(203).json({ status: 'supperssion :) ' })
+    })
 });
 
 module.exports = router;
