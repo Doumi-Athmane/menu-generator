@@ -13,6 +13,8 @@ export async function supp_ingrediant(id) {
     
 }
 
-export async function ajouter_ingrediant (nom){
-    let res = await api.post(`/ingrediant/`)
+export async function ajouter_ingrediant (nomIngrediant){
+    let res = await api.post(`/ingrediant/`, {nomIngrediant})
+    return res.data;
+
 }

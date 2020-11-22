@@ -3,7 +3,7 @@ import './index.css'
 import ChercherIng from './chercherIngrediant'
 import ListIngrediants from './listIngrediants'
 import AjouterIngrediant from './ajouterIngrediant'
-import {list_ingrediants , supp_ingrediant} from '../../requests/ingrediant'
+import {list_ingrediants } from '../../requests/ingrediant'
 
 
 class index extends Component {
@@ -19,14 +19,18 @@ class index extends Component {
         }  
        GetIng()
        this.deleteIng = this.deleteIng.bind(this)
+       
     }
 
     deleteIng(id) {
-        console.log("hee")
         this.setState({Les_ingrediants: this.state.Les_ingrediants.filter(e => e.idIngrediant !== id)})
     }
 
-  
+ 
+
+    
+
+    
 
     render() {
         return (
@@ -58,7 +62,7 @@ class index extends Component {
 
                     </div>
                     <div className='ajouterIngrediant'>
-                        <AjouterIngrediant />
+                        <AjouterIngrediant  />
 
                     </div>
 
