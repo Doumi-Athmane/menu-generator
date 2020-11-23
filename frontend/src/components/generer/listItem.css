@@ -22,6 +22,10 @@
     outline: unset;
 }
 
+.true {
+    background-color: rgba(255, 81, 81, 0.527);
+}
+
 .item>button {
     height: 25px;
     width: 25px;
@@ -29,6 +33,7 @@
     background-color: unset;
     border: unset;
     outline: unset;
+    cursor: pointer;
 }
 
 .item>button>img {

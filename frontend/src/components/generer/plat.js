@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { ingrediants as getIngs } from '../../requests/plat'
 import './plat.css'
 
-function Plat({nom, type, prix, ingrediants}) {
+function Plat({plat}) {
+
+    const [ingrediants, setIngrediants] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+            const t = await getIngs(plat.idPlat);
+            setIngrediants(t);
+        }
+        fetchData()
+    })
+
     return (
         <div className="showPlat">
-            <h3>Plat {nom}</h3>
-            <p>type: {type}</p>
-            <p>prix: {prix}</p>
+            <h3>Plat {plat.nom}</h3>
+            <p>type: {plat.type}</p>
+            <p>prix: {plat.prix}</p>
             <p>ingrediants: </p>
             <div className="ingrs">
-                {ingrediants && ingrediants.map(e => (<span>{e.nom}</span>))}
+                {ingrediants.map(e => (<span>{e.nomIngrediant}</span>))}
             </div>
         </div>
     )

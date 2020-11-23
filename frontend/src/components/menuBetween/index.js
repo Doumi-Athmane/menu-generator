@@ -18,8 +18,8 @@ class index extends Component {
     
 
   
-    callDay_debut = (clikedDay) =>  this.setState({ date1 :clikedDay }); 
-    callDay_fin = (clikedDay) =>  this.setState({ date2 :clikedDay }); 
+    callDay_debut = (clikedDay) =>  this.setState({ date1 :clikedDay.getFullYear() + "-"+ parseInt(clikedDay.getMonth()+1) +"-"+clikedDay.getDate() }); 
+    callDay_fin = (clikedDay) =>  this.setState({ date2 : clikedDay.getFullYear() + "-"+ parseInt(clikedDay.getMonth()+1) +"-"+clikedDay.getDate() }); 
     
 
     render() {

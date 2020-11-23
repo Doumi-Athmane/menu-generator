@@ -1,11 +1,27 @@
-import React from 'react'
-import Dropdown from './dropdown'
-import {Nom, Prix, Type } from './filter'
+import React, {useState, useEffect} from 'react'
+/*import Dropdown from './dropdown'
+import {Nom, Prix, Type } from './filter'*/
 import Row from './row'
 import Arrow from '../../assets/arrow-down-sign.svg'
 import './tableau.css'
 
-export default function Tableau({ plats }) {
+export default function Tableau({ plats, modifier }) {
+
+    const [page, setPage] = useState(1)
+
+    function modifyPage(offset) {
+        const p = page + offset;
+        const o = plats.length % 8 ? 1: 0;
+        if (p < 1 || p > plats.length / 8 + o)
+            return
+        setPage(p)
+    }
+
+    const [platsPage, setPlatsPage] = useState(plats)
+
+    useEffect(() => {
+        setPlatsPage(plats.slice((page-1)*8, page*8))
+    }, [page, plats])
 
     return (
         <div className="grid">
@@ -13,35 +29,29 @@ export default function Tableau({ plats }) {
                 <tbody>
                     <tr>
                         <th>
-                            Nom 
-                            <Dropdown >
-                                <Nom />
-                            </Dropdown>
+                            Nom
                         </th>
                         <th>
-                            Type 
-                            <Dropdown >
-                                <Type />
-                            </Dropdown>
+                            Type
                         </th>
                         <th>
                             Prix 
-                            <Dropdown >
+                            {/*<Dropdown >
                                 <Prix />
-                            </Dropdown>
+                            </Dropdown>*/}
                         </th>
                         <th></th>
                         <th></th>
                     </tr>
-                    {plats && plats.map(e => (
-                        <Row nom={e.nom} type={e.type} prix={e.prix} key={e.id} />
+                    {platsPage && platsPage.map(e => (
+                        <Row plat={e} key={e.idPlat} modifier={modifier} />
                     ))}
                 </tbody>
             </table>
             <div className="paging">
-                <button><img src={Arrow} alt="previous" /></button>
-                1
-                <button><img src={Arrow} alt="next" /></button>
+                <button onClick={() => modifyPage(-1)}><img src={Arrow} alt="previous" /></button>
+                {page}
+                <button onClick={() => modifyPage(+1)}><img src={Arrow} alt="next" /></button>
             </div>
         </div>
     )

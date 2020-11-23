@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./listItem.css"
 import Stop from '../../assets/stop.svg'
 
 
 export default function Item(props) {
+    const [exclude, setExclude] = useState(false)
+
     function click() {
-        props.model(true);
+        props.model(props.plat);
     }
     function click2(e) {
         e.stopPropagation();
-        alert('yes')
+        setExclude(!exclude)
+        if (!exclude) {
+            props.modifier.addPlat(props.plat.idPlat)
+        } else {
+            props.modifier.delPlat(props.plat.idPlat)
+        }
     }
     return (
-        <button className="item" onClick={click}>
-            <p>{props.name}</p>
+        <button className={`item ${exclude}`} onClick={click}>
+            <p>{props.plat.nom}</p>
             <button>
-                <img src={Stop} alt="fork" onClick={click2} />
+                <img src={Stop} alt="remove" onClick={click2} />
             </button>
         </button>
     )

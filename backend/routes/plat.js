@@ -87,22 +87,22 @@ route.post('/', (req, res) => {
 
         if (err) {
             res.status(400);
-            res.json({ err })
+            res.json({ err, results })
         } else {
 
-            connection.query(ajouter_type_plat(resulats.insertId,type,choix),(err,resulats)=> {
+            connection.query(ajouter_type_plat(results.insertId,type,choix),(err,results2)=> {
                 if (err) {
                     res.status(400);
-                    res.json({ err })
+                    res.json({ err, results2 })
                 }else {
                     const ingrediants = req.body.ingrediants
-                    connection.query(ajouter_ingrediants_plat(results.insertId, ingrediants), (err, resulats) => {
-                    if (err) {
-                    res.status(400);
-                    res.json({ err })
+                    connection.query(ajouter_ingrediants_plat(results.insertId, ingrediants), (err, results3) => {
+                        if (err) {
+                            res.status(400);
+                            res.json({ err, results3 })
 
-                     } else res.send(results)
-                     })
+                        } else res.send(results3)
+                    })
                 }
             })
             

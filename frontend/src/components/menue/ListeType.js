@@ -10,6 +10,7 @@ class ListePlat extends Component {
    
 
     render() {
+        console.log(this.props.plat);
         return (
             <div className='listePlat'>
                 <div className='titleType'>
@@ -17,7 +18,7 @@ class ListePlat extends Component {
                 </div>
 
                 <div className = 'contenu'> 
-                   <ListPlat plats ={this.props.plat} />
+                   <ListPlat plats ={this.props.plat } />
                 </div>
                 
                 
