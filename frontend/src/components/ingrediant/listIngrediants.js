@@ -3,7 +3,7 @@ import './listIngrediants.css'
 import Ingrediant from './ingrediant'
 
 export default function listIngrediants (props) {
-    console.log(props)
+    
     return(
         <div className='listtIngrediants'>
 

@@ -49,7 +49,7 @@ class index extends Component {
                 </div>
                 <div className='rechercher'>
 
-                    <Button label = 'Rechercher' link ='/menuBetween'  date1 = {this.state.date1 ? (this.state.date1) :''}  date2={this.state.date2 || ''}/>
+                    <Button label = 'Rechercher'  link ={`/menuBetween/?date1=${this.state.date1}&date2=${this.state.date2}`}  date1 = {this.state.date1 ? (this.state.date1) :''}  date2={this.state.date2 ? (this.state.date2) :''}/>
 
                 </div>
                 

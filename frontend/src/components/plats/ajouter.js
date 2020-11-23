@@ -1,23 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { WithContext as ReactTags } from 'react-tag-input'
 import Button from '../button'
+import { list_ingrediants } from '../../requests/ingrediant'
 import './ajouter.css'
-
-const suggest = [
-    {id: "sel", text: "sel"},
-    {id: "buerre", text: "buerre"},
-    {id: "huile", text: "huile"},
-    {id: "amande affile", text: "amande affile"},
-    {id: "test", text: "test"},
-    {id: "test2", text: "test2"},
-    {id: "test3", text: "test3"},
-    {id: "test4", text: "test4"},
-]
 
 function Ajouter() {
 
     const [tags, setTags] = useState([]);
-    const [suggestions] = useState(suggest);
+    const [suggestions, setSuggestions] = useState([]);
+    const [nom, setNom] = useState('')
+    const [type, setType] = useState('')
+    const [prix, setPrix] = useState('')
+
+    useEffect(() => {
+        async function fetchData() {
+            let res = await list_ingrediants()
+            setSuggestions(res.map(e => ({text: e.nomIngrediant, id: e.nomIngrediant, key: e.idIngrediant})))
+        }
+        fetchData()
+    })
 
     function handleDelete(i) {
         setTags(tags.filter((e, id) => id !== i))
@@ -36,18 +37,23 @@ function Ajouter() {
     
         // re-render
         setTags(newTags);
-      }
+    }
+
+    function ajouter() {
+        let t = tags.map(e => e.text)
+        console.log(tags)
+    }
 
     return (
         <div className="addplat">
             <h3 id="titre">Ajouter un plat</h3>
-            <input type="text" placeholder="nom Plat" id="nom" />
-            <select placeholder="Type" id="droplist">
+            <input type="text" placeholder="nom Plat" id="nom" onChange={e => setNom(e.target.value)}/>
+            <select placeholder="Type" id="droplist" onChange={e => setType(e.target.value)}>
                 <option>Entree</option>
                 <option>Principal</option>
                 <option>Dessert</option>
             </select>
-            <input type="text" placeholder="Prix" id="prix" />
+            <input type="text" placeholder="Prix" id="prix" onChange={e => setPrix(e.target.value)} />
             <ReactTags
                 tags={tags}
                 suggestions={suggestions}
@@ -57,7 +63,7 @@ function Ajouter() {
                 handleDrag={handleDrag}
                 placeholder="Ajouter ingrediant"
             />
-            <Button label="Ajouter" />
+            <Button label="Ajouter" onClick={ajouter} />
         </div>
     )
 }

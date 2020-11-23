@@ -5,9 +5,7 @@ import axios from 'axios'
 import { supp_ingrediant} from '../../requests/ingrediant'
 
 
-const api = axios.create({
-    baseURL : `http://localhost:3500/api/ingrediant/:id`
-  })
+
 
 export default function Ingrediant(props) {
     return (
