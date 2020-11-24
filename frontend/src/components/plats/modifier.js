@@ -2,27 +2,30 @@ import React, { useState, useEffect } from 'react'
 import { WithContext as ReactTags } from 'react-tag-input'
 import Button from '../button'
 import { list_ingrediants } from '../../requests/ingrediant'
-import { ajouter as ajouterPlat } from '../../requests/plat';
+import { ingrediants } from '../../requests/plat'
+import { modifier as modifierPlat } from '../../requests/plat';
 import './ajouter.css'
 
-function Ajouter() {
+function Modifier({plat}) {
 
     const [tags, setTags] = useState([]);
     const [suggestions, setSuggestions] = useState([]);
-    const [nom, setNom] = useState('')
-    const [type, setType] = useState('entree')
-    const [prix, setPrix] = useState('')
-    const [choix, setChoix] = useState('poulet')
-    const [fixe, setFixe] = useState(false)
+    const [nom, setNom] = useState(plat.nom)
+    const [type, setType] = useState(plat.type)
+    const [prix, setPrix] = useState(plat.prix)
+    const [choix, setChoix] = useState(plat.choix)
+    const [fixe, setFixe] = useState(!!plat.fixe)
     const [estPrincipal, setEstPrincipal] = useState(false)
 
     useEffect(() => {
         async function fetchData() {
             let res = await list_ingrediants()
             setSuggestions(res.map(e => ({text: e.nomIngrediant, id: e.nomIngrediant, key: e.idIngrediant})))
+            let res2 = await ingrediants(plat.idPlat);
+            setTags(res2.map(e => ({text: e.nomIngrediant, id: e.nomIngrediant, key: e.idIngrediant})))
         }
         fetchData()
-    })
+    }, [plat.idPlat])
 
     function handleDelete(i) {
         setTags(tags.filter((e, id) => id !== i))
@@ -43,18 +46,20 @@ function Ajouter() {
         setTags(newTags);
     }
 
-    async function ajouter() {
+    async function modifier() {
+        
         let data = {
+            id: plat.idPlat,
             nom, 
             prix: parseInt(prix), 
             fixe: fixe? 1 : 0,
             type, 
+            choix,
             ingrediants: tags.map(e => e.key),
-            choix
         };
-        ajouterPlat(data)
+
+        modifierPlat(data)
         .then(e => {
-            console.log(e)
             alert('added!');
         })
         .catch(e => {
@@ -65,23 +70,29 @@ function Ajouter() {
 
     return (
         <div className="addplat">
-            <h3 id="titre">Ajouter un plat</h3>
-            <input type="text" placeholder="nom Plat" id="nom" onChange={e => setNom(e.target.value)}/>
+            <h3 id="titre">Modifier un plat</h3>
+            <input type="text" placeholder="nom Plat" id="nom" onChange={e => setNom(e.target.value)} value={nom} />
             <select placeholder="Type" id="droplist" onChange={e => {
                 setEstPrincipal(e.target.value === "principal")
                 setType(e.target.value)
-            }}>
+            }} value={type} >
                 <option value="entree">entree</option>
                 <option value="principal">principal</option>
                 <option value="dessert">dessert</option>
             </select>
-            <select placeholder="Choix" id="droplist2" style={{display: estPrincipal?"inline-block":"none"}} onChange={e => setChoix(e.target.value)}>
-                <option>poulet</option>
-                <option>viande</option>
+            <select 
+                placeholder="Choix" 
+                id="droplist2" 
+                style={{display: estPrincipal?"inline-block":"none"}} 
+                onChange={e => setChoix(e.target.value)}
+                value={choix} >
+                <option value="poulet">poulet</option>
+                <option value="viande">viande</option>
             </select>
-            <input type="text" placeholder="Prix" id="prix" onChange={e => setPrix(e.target.value)} />
+            <input type="text" placeholder="Prix" id="prix" onChange={e => setPrix(e.target.value)} value={prix} />
             <div>
-                <label>fixe </label><input type="checkbox" onChange={e => {setFixe(e.target.checked)}}  />
+                <label>fixe </label>
+                <input type="checkbox" onChange={e => {setFixe(e.target.checked)}} checked={fixe} />
             </div>
             <ReactTags
                 tags={tags}
@@ -92,9 +103,9 @@ function Ajouter() {
                 handleDrag={handleDrag}
                 placeholder="Ajouter ingrediant"
             />
-            <Button label="Ajouter" onClick={ajouter} />
+            <Button label="Modifier" onClick={modifier} />
         </div>
     )
 }
 
-export default Ajouter;
+export default Modifier;

@@ -1,15 +1,11 @@
-const ajouter_plat = (params) => {
+const ajouter_plat = ({ nom, prix ,fixe}) => {
 
-    const { nom, prix ,fixe} = params.plat;
-
-    return (`insert into plat (nom, prix, fixe) values ('${nom}',${prix},${fixe})`)
+    return `insert into plat (nom, prix, fixe) values ('${nom}',${prix},${fixe})`
 
 
 }
 
-const ajouter_type_plat = (idPlat ,typee ,choixx) => {
-    const type = typee 
-    const choix = choixx
+const ajouter_type_plat = (idPlat ,type ,choix) => {
     if(type == 'entree'){
         return (`insert into entree (idPlat) values (${idPlat}) `)
     } else if (type == 'principal') {
@@ -19,18 +15,9 @@ const ajouter_type_plat = (idPlat ,typee ,choixx) => {
     }
 }
 
-const ajouter_ingrediants_plat = (idPlat, params) => {
+const ajouter_ingrediants_plat = (idPlat, ingrediants) => {
 
-    const ingrediants = params;
-
-    var query = `insert into composer (idPlat ,idIngrediant,quantite,unite) values `;
-
-    ingrediants.forEach(ing => {
-        query += `(${idPlat}, ${ing.idIngrediant},${ing.quantite},'${ing.unite}'),`
-
-    })
-
-    return query.substr(0, query.length - 1);
+    return `insert into composer (idPlat ,idIngrediant) values ${ingrediants.map(e => `(${idPlat}, ${e})`).join(',')}`;
 
 
 }

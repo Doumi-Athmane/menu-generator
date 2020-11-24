@@ -3,17 +3,20 @@ import Modal from 'react-overlays/Modal'
 import Table from './tableau'
 import Button from '../button'
 import Ajouter from './ajouter'
-import plat from '../../requests/plat'
+import Modifier from './modifier'
+import {plat as getPlat} from '../../requests/plat'
 import './index.css'
 
 export default function Plats() {
 
     const [show, setShow] = useState(false);
+    const [show2, setShow2] = useState(false);
+    const [plat, setPlat] = useState({})
     const [plats, setPlats] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
-            const res = await plat();
+            const res = await getPlat();
             
             let arr = [];
             for (let i in res) {
@@ -29,6 +32,15 @@ export default function Plats() {
         fetchData()
     })
 
+    function showModifier(plat) {
+        if (plat.type === "principal"){
+            plat.choix = plat.nom.slice(-7, -1);
+            plat.nom = plat.nom.slice(0, -8).trimEnd();
+        }
+        setShow2(true)
+        setPlat(plat)
+    }
+
     const Backdrop = props => (<div className="hidden" {...props}></div>)
 
     return (
@@ -36,7 +48,7 @@ export default function Plats() {
             <div>
                 <h3>Plats</h3>
             </div>
-            <Table plats={plats} />
+            <Table plats={plats} modifier={showModifier} />
             <div className="btnCont">
                 <Button label="Ajouter Nouveau" onClick={() => setShow(true)} />
             </div>
@@ -48,6 +60,15 @@ export default function Plats() {
                 className="modal"
             >
                 <Ajouter />
+            </Modal>
+            <Modal 
+                show={show2}
+                onHide={() => setShow2(false)}
+                renderBackdrop={Backdrop}
+                aria-labelledby="modal-label"
+                className="modal"
+            >
+                <Modifier plat={plat} />
             </Modal>
         </div>
     )

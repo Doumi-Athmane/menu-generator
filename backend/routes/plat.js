@@ -4,6 +4,7 @@ const { plats } = require('../requets/plat/select');
 const platsNotInMenu = require('../requets/plat/select_not_in_menu');
 const ingrediantDePlat = require('../requets/plat/select_ingrediant');
 const { ajouter_plat, ajouter_ingrediants_plat , ajouter_type_plat} = require('../requets/plat/ajouter');
+const modifier = require('../requets/plat/modifier')
 
 const supprimer = require('../requets/plat/supprimer');
 
@@ -87,22 +88,22 @@ route.post('/', (req, res) => {
 
         if (err) {
             res.status(400);
-            res.json({ err })
+            res.json({ err, results })
         } else {
 
-            connection.query(ajouter_type_plat(resulats.insertId,type,choix),(err,resulats)=> {
+            connection.query(ajouter_type_plat(results.insertId,type,choix),(err,results2)=> {
                 if (err) {
                     res.status(400);
-                    res.json({ err })
+                    res.json({ err, results2 })
                 }else {
                     const ingrediants = req.body.ingrediants
-                    connection.query(ajouter_ingrediants_plat(results.insertId, ingrediants), (err, resulats) => {
-                    if (err) {
-                    res.status(400);
-                    res.json({ err })
+                    connection.query(ajouter_ingrediants_plat(results.insertId, ingrediants), (err, results3) => {
+                        if (err) {
+                            res.status(400);
+                            res.json({ err, results3 })
 
-                     } else res.send(results)
-                     })
+                        } else res.send(results3)
+                    })
                 }
             })
             
@@ -110,6 +111,19 @@ route.post('/', (req, res) => {
 
     })
 });
+
+route.put('/:id', (req, res) => {
+    const { id } = req.params;
+    const { nom, prix, type, choix, fixe, ingrediants } = req.body;
+
+    connection.query(modifier({id, nom, prix, fixe, type, choix, ingrediants}), (err, results) => {
+        if (err) {
+            res.status(400).json(err)
+            return;
+        }
+        res.status(202).json(results)
+    })
+})
 
 //-----------------------------------------------------DELETE----------------------------------------------
 

@@ -9,22 +9,14 @@ import getPlat from '../../requests/generer'
 import Fork from '../../assets/fork.svg'
 import Spoon from '../../assets/spoon.svg'
 
-const tempEntrees = [
-    {name: 'item1', key: 1},
-    {name: 'item2', key: 2},
-    {name: 'item3', key: 3},
-    {name: 'item4', key: 4},
-    {name: 'item5', key: 5},
-    {name: 'item6', key: 6},
-    {name: 'item7', key: 7},
-];
-
 
 function Generer() {
     const [show, setShow] = useState(false);
     const [entree, setEntree] = useState([])
     const [principal, setPrincipal] = useState([])
     const [dessert, setDessert] = useState([])
+    const [plat, setPlat] = useState({}); 
+    const [platsSupp, setPlatsSupp] = useState([])
 
     useEffect(() => {
         async function fetchData() {
@@ -37,6 +29,16 @@ function Generer() {
         fetchData().catch(() => {})
     }, [])
 
+    const modif = {
+        addPlat: id => setPlatsSupp([...platsSupp, id]),
+        delPlat: id => setPlatsSupp(platsSupp.filter(e => e !== id))
+    }
+
+    function showModal(plat) {
+        setShow(true)
+        setPlat(plat)
+    }
+
     const Backdrop = props => (<div className="hidden" {...props}></div>)
 
     return (
@@ -45,22 +47,22 @@ function Generer() {
                 <h2>Generer un menu</h2>
             </div>
             <div className="entrees">
-                <List title="Entrees :" items={entree} model={setShow} />
+                <List title="Entrees :" items={entree} model={showModal} modifier={modif} />
             </div>
             <div className="barrier fork">
                 <img src={Fork} alt="fork" />
             </div>
             <div className="principal">
-                <List2 title="Principals :" items={principal} model={setShow} />
+                <List2 title="Principals :" items={principal} model={showModal} modifier={modif} />
             </div>
             <div className="barrier spoon">
                 <img src={Spoon} alt="spoon" /> 
             </div>
             <div className="desserts">
-                <List title="Desserts :" items={dessert} model={setShow} />
+                <List title="Desserts :" items={dessert} model={showModal} modifier={modif} />
             </div>
             <div className="btns">
-                <Button label="Generer Menu" link="/menuJour"/>
+                <Button label="Generer Menu" link={`/menuJour?plats=${platsSupp}`} />
 
             </div>
             <Modal 
@@ -70,7 +72,7 @@ function Generer() {
                 aria-labelledby="modal-label"
                 className="modal"
             >
-                <Plat />
+                <Plat plat={plat} />
             </Modal>
         </div>
     )

@@ -15,7 +15,7 @@ class ListCont extends Component {
                     <h3>{this.props.title}</h3>
                 </div>
                 <div className="list">
-                    <List items={this.props.items} model={this.props.model} />
+                    <List items={this.props.items} model={this.props.model} modifier={this.props.modifier} />
                 </div>
             </div>
         )

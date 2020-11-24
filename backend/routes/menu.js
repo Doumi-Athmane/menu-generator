@@ -46,11 +46,30 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/plat', (req, res) => {
     // get all plats of menu id
-    connection.query(plats(req.params.id), (err, results) => {
+    connection.query(plats(req.params.id ,'entree'), (err, results) => {
         if (err) {
             res.status(400);
             res.json({ err })
-        } else res.json(results)
+        } else {
+            connection.query(plats(req.params.id ,'principal'), (err, results2) => {
+                if (err) {
+                    res.status(400);
+                    res.json({ err })
+                } else{
+                    connection.query(plats(req.params.id ,'dessert'), (err, results3) => {
+                        if (err) {
+                            res.status(400);
+                            res.json({ err })
+                        } else{
+                            res.json({
+                                entree : results,
+                                principal : results2,
+                                dessert : results3}
+                            )
+                        }})
+                }})
+
+        }
     });
 });
 
@@ -74,12 +93,17 @@ router.get('/:id/ingrediant', (req, res) => {
 
 router.post('/', (req, res) => {
     connection.query(ajouter.menu(), (err, results) => {
+
+
+
         if (err) {
+
             res.status(400);
             res.json({ err })
 
         } else {
-            connection.query(ajouter.plats_menu(results.insertId, req.body), (err, results) => {
+            connection.query(ajouter.plats_menu(results.insertId, req.body.idPlat), (err, results) => {
+
                 if (err) {
                     res.status(400);
                     res.json({ err })
