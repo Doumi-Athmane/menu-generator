@@ -4,6 +4,9 @@ import Menu from '../menu'
 import Valider from './valider'
 import Refresh from './refresh'
 import Ingrediants from './ingrediants'
+import {ajouter_menu_de_jour , get_ingrediant_menu} from '../../requests/menuJour'
+import ingrediant from './ingrediant';
+import ingrediants from './ingrediants';
 
 
 
@@ -30,44 +33,95 @@ const test1 = [
     
 ]
 
-const entrees =[
-
-    {nom :'entree1' , prix : 200},
-    {nom :'entree2' , prix : 200},
-    {nom :'entree3' , prix : 200},
-    {nom :'entree4' , prix : 200},
-    {nom :'entree5' , prix : 200},
-    {nom :'entree6' , prix : 200},
-
-]
-
-
-const principals = [
-    {nom :'principal1' , prix : 200},
-    {nom :'principal2 ' , prix : 200},
-    
-
-]
-
-
-const desserts = [
-    {nom :'dssrt1' , prix : 200},
-    {nom :'dssrt2' , prix : 200},
-    {nom :'dssrt3' , prix : 200},
-    {nom :'dssrt4' , prix : 200},
-    {nom :'dssrt5' , prix : 200},
-    {nom :'dssrt6' , prix : 200},
-
-]
 class PageMenu extends Component {
 
 
+    AjouterMenuJour = async (e)  => {
+        this.setState({ data :  await ajouter_menu_de_jour(e)})
+        
+    }
+    GetIngrediant = async (e) => {
+        this.setState({ ingrediants : this.state.ingrediants.concat(await get_ingrediant_menu(e)) })
+        console.log({ ingrediants : await get_ingrediant_menu(e)})
+        console.log(this.state.ingrediants)
+    }
 
-    state = {
-        date : '2020-11-10'
+    
+
+    constructor(){
+        super()
+        
+        var today = new Date()
+            today = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+
+        this.state = {
+            date : today,
+            dataM :[],
+            ingrediants :[]
+         
+        }
+
+        this.getentree = this.getentree.bind(this);
+        this.getprincipal = this.getprincipal.bind(this);
+        this.getdessert = this.getdessert.bind(this);
+
+
+    }
+
+    getentree(data) {
+        
+        const dataI = []
+        data && data.forEach(element => {
+            dataI.push(element.idPlat)
+            
+        });
+       
+
+        this.setState({ dataM: this.state.dataM.concat(dataI)});
+       
+        
+    }
+
+    getprincipal(data){
+        const dataI = []
+        data && data.forEach(element => {
+            dataI.push(element.idPlat)
+
+           
+        });
+
+        this.setState({ dataM: this.state.dataM.concat(dataI)});
+
+    }
+
+    getdessert(data){
+        const dataI = []
+       
+        data && data.forEach(element => {
+            dataI.push(element.idPlat)
+
+            
+        });
+       
+        this.setState({ dataM: this.state.dataM.concat(dataI)}) ;
+        
+        this.GetIngrediant(this.state.dataM.join())
+       
+        
+
+
+    }
+
+    componentDidMount(prevState) {
+        if (this.state !== prevState){
+            this.GetIngrediant(this.state.dataM.join())
+            console.log(this.GetIngrediant(this.state.dataM.join()))
+        }
     }
 
     render() {
+
+       
         return (
             <div className='menupage'>
 
@@ -80,10 +134,11 @@ class PageMenu extends Component {
 
                 <div className ='contenue'>
                     <div className = 'cotéMenu'>
-                        <Menu entree ={entrees} principal={principals} dessert={desserts}/>
+                        <Menu entree={this.getentree} principal={this.getprincipal} dessert={this.getdessert} />
                         
                         <div className ='valide'>
-                           <Valider/>
+                           <Valider onClick = {() => {this.AjouterMenuJour(this.state.dataM)
+                                                        alert('Menu ajouté')}}/>
                            <Refresh/>
                            
                         </div>
@@ -91,7 +146,7 @@ class PageMenu extends Component {
                     </div>
 
                     <div className ='ingrediantss'>
-                        <Ingrediants ingrediants ={test1}/>
+                        <Ingrediants ingrediants ={this.state.ingrediants}/>
                     </div>
                     
                 </div>

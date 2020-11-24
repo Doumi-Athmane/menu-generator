@@ -10,7 +10,7 @@ class ListePlat extends Component {
    
 
     render() {
-        console.log(this.props.plat);
+        
         return (
             <div className='listePlat'>
                 <div className='titleType'>

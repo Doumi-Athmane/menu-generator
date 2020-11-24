@@ -6,7 +6,7 @@ export default function ListPlat(props) {
     return (
         <div className='ingrediants'>
             {
-                props.ingrediants.map(e => <Ingrediant nom={e.nom} />)
+              props.ingrediants && props.ingrediants.map(e => <Ingrediant nom={e.nomIngrediant} />)
             }
         </div>
     )

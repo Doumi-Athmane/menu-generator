@@ -3,7 +3,7 @@ import './btn.css'
 export default function Refresh() {
     return (
         <div className='refresh'>
-             <button>
+             <button onClick={()=>window.location.reload()} >
                 Refresh
              </button>
         </div>

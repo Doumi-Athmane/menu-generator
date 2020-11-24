@@ -1,11 +1,9 @@
-module.exports = (id) => {
+module.exports = (idplat) => {
 
     return `select distinct i.* from 
-        ingrediant i 
+            ingrediant i 
             natural join (
-                composer  natural join (
-                select * from contient con
-                where con.idMenu = ${id}
-            ) f
-        );`
+                select * from composer c 
+                where c.idPlat in (${idplat})
+            )f;`
 }

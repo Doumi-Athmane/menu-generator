@@ -2,17 +2,10 @@ import React, { Component } from 'react';
 import Plats from './menue/ListeType'
 import './menue/index.css'
 import {list_menu , plat_menu} from '../requests/menu'
+import { afficher_menu_de_jour} from '../requests/menuJour'
+ 
+  
 
-
-const test = [
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    {nom :'entree1' , prix : 200},
-    
-]
 
 class menu extends Component {
 
@@ -22,22 +15,29 @@ class menu extends Component {
      
     Getid = async () => {
        let t = await list_menu(this.props.dateMenu)
-       // console.log(list_menu(this.props.dateMenu))
+     
         return t
     }  
 
     GetMenu = async (e) => {
         this.setState({ data : await plat_menu(e.[0].idMenu)}) 
-       // console.log(this.state.data.entree)
-
-   
-    }  
+       
+    } 
+    AfficherMenuJour = async (e)  => {
+        this.setState({ data :  await afficher_menu_de_jour(e)})
+        
+    }
     
-   
+    
+
 
     constructor (props)  {
+
+        
             
         super(props)
+
+        
 
         this.state={
                 date : props.dateMenu  ,
@@ -45,12 +45,32 @@ class menu extends Component {
                 data: {}
              
         }
+
+        var location = window.location.href
+        
+        
+        var url = new URL(location)
+
+        var idplats = url.searchParams.get("plats") ? url.searchParams.get("plats") : ''
+        
+
         this.Getid().then((e) => this.GetMenu(e))
-           // console.log(this.Getid())
-      //  console.log(this.state.data[0])
+
+        this.AfficherMenuJour(idplats).then(()=> {props.entree(this.state.data.entree)
+                                                  props.principal(this.state.data.principal)
+                                                  props.dessert(this.state.data.dessert)   
+                                                                       })
+                                                .catch(e => console.log(e))
+        
+       
+           
         
         
     }
+
+    
+
+      
 
     componentDidUpdate(prevProps){
 
@@ -74,7 +94,7 @@ class menu extends Component {
 
     render() {
                
-       
+        
         
         return (
             <div className ='menu' >

@@ -4,8 +4,7 @@ import Menu from '../menu'
 import left from '../../assets/left.svg'
 import right from '../../assets/right.svg'
 import {
-    BrowserRouter as Router,
-    Link,
+    
     useLocation
   } from "react-router-dom";
   

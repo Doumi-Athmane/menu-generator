@@ -75,10 +75,10 @@ router.get('/:id/plat', (req, res) => {
 
 
 
-router.get('/:id/ingrediant', (req, res) => {
+router.get('/:idPlat/ingrediant', (req, res) => {
     //get ingrediants of menu 
 
-    const id = req.params.id
+    const id = req.params.idPlat
     connection.query(ingrediant_menu(id), (err, results) => {
         if (err) {
             res.status(400);
