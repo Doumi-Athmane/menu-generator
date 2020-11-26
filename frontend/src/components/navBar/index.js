@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import User from './user'
 import PageBtn from './mainBtn'
 import SettingsBtn from './secondBtn'
@@ -10,14 +10,26 @@ import Ingrediant from '../../assets/vegetable.svg'
 import Parametres from '../../assets/preference.svg'
 import Logout from '../../assets/logout.svg'
 import './index.css'
+import {logout} from '../../authService'
 
 export default class NavBar extends Component {
     constructor(props) {
         super(props);
         this.props = props;
+        this.state = {
+            redirect: false
+        }
+
+        this.performLogout = this.performLogout.bind(this)
+    }
+
+    performLogout() {
+        logout();
+        this.setState({redirect: true})
     }
 
     render() {
+        if (this.state.redirect) return <Redirect to="/" />
         return (
             <div className="NavBar">
                 <div className="UserColumn">
@@ -30,8 +42,8 @@ export default class NavBar extends Component {
                     <Link to="/ingrediant"><PageBtn icon={Ingrediant} text="Ingrediant" /></Link>
                 </div>
                 <div className="LogoutColumn">
-                    <SettingsBtn icon={Parametres} text="Parametres" />
-                    <SettingsBtn icon={Logout} text="deconnexion" />
+                    {/* <SettingsBtn icon={Parametres} text="Parametres" /> */}
+                    <SettingsBtn icon={Logout} text="deconnexion" onClick={this.performLogout} />
                 </div>
             </div>
         )

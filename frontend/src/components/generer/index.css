@@ -9,10 +9,15 @@
     grid-column: 1 / 8;
 }
 
+.entrees,
+.principal,
+.desserts {
+    grid-row: 2;
+}
+
 .entrees {
     grid-column: 2;
 }
-
 
 .barrier {
     margin: auto;
@@ -26,7 +31,7 @@
     grid-column: 4;
 }
 
-.split > div {
+.split>div {
     float: left;
     width: 45%;
 }

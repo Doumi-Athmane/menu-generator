@@ -1,11 +1,10 @@
 import React from 'react'
-import './btn.css'
+import Button from '../button'
+
 export default function Refresh() {
     return (
-        <div className='refresh'>
-             <button onClick={()=>window.location.reload()} >
-                Refresh
-             </button>
+        <div className='valider refresh'>
+             <Button onClick={()=>window.location.reload()} label="Refresh" />
         </div>
     )
 }

@@ -14,7 +14,7 @@
 }
 
 .contenue {
-    flex: 9;
+    flex: 12;
     display: flex;
     flex-direction: row;
 }
@@ -23,33 +23,53 @@
     flex: 5;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .ingrediantss {
     flex: 4;
-    display: flex;
+    display: none;
     flex-direction: column;
     box-sizing: content-box;
 }
 
-.cotéMenu .menu {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 600px;
-    margin-left: 100px;
+@media (min-width: 700px) {
+    .ingrediantss {
+        display: flex;
+    }
+}
+
+@media (max-width: 700px) {
+    .cotéMenu .menu {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 10px;
+        margin-right: 5px;
+    }
+}
+
+@media (min-width :700px) {
+    .cotéMenu .menu {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 600px;
+        margin-left: 100px;
+    }
 }
 
 .valide {
     flex: 1;
     display: flex;
-    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .cotéMenu hr {
     width: 180px;
-    margin-left: 300px;
+    margin-left: 200px;
     height: 1.5px;
     background-color: #979797;
     box-shadow: #D5CFCF 1px 1px 4px;

@@ -9,7 +9,7 @@
 
 CREATE TABLE Ingrediant(
         idIngrediant Int  Auto_increment  NOT NULL ,
-        nomIngrediant Varchar (50) NOT NULL
+        nomIngrediant Varchar (100) NOT NULL
 	,CONSTRAINT Ingrediant_PK PRIMARY KEY (idIngrediant)
 )ENGINE=InnoDB;
 
@@ -20,7 +20,7 @@ CREATE TABLE Ingrediant(
 
 CREATE TABLE Plat(
         idPlat Int  Auto_increment  NOT NULL ,
-        nom    Varchar (50) NOT NULL ,
+        nom    Varchar (100) NOT NULL ,
         prix   Int NOT NULL ,
         fixe   Bool NOT NULL
 	,CONSTRAINT Plat_PK PRIMARY KEY (idPlat)
@@ -56,7 +56,8 @@ CREATE TABLE Admin(
 #------------------------------------------------------------
 
 CREATE TABLE Entree(
-        idPlat Int NOT NULL 
+        idPlat Int NOT NULL ,
+        type   Varchar (50)
 	,CONSTRAINT Entree_PK PRIMARY KEY (idPlat)
 
 	,CONSTRAINT Entree_Plat_FK FOREIGN KEY (idPlat) REFERENCES Plat(idPlat) on delete cascade

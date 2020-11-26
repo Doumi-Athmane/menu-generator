@@ -8,15 +8,11 @@ import './index.css'
 class index extends Component {
     
    
-        state = {
-            date1 :new Date(),
-            date2 : new Date()
-        }
+    state = {
+        date1 :new Date(),
+        date2 : new Date()
+    }
     
-    
-
-    
-
   
     callDay_debut = (clikedDay) =>  this.setState({ date1 :clikedDay.getFullYear() + "-"+ parseInt(clikedDay.getMonth()+1) +"-"+clikedDay.getDate() }); 
     callDay_fin = (clikedDay) =>  this.setState({ date2 : clikedDay.getFullYear() + "-"+ parseInt(clikedDay.getMonth()+1) +"-"+clikedDay.getDate() }); 
@@ -29,7 +25,7 @@ class index extends Component {
 
             <div className='allpage'>
                 <div className='BigTitle'>
-                        <h1>Menu</h1>
+                        <h2>Menu</h2>
                 </div>
                 <div className='calenders'>
                     <div className='calender1'>

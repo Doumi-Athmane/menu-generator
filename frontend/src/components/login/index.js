@@ -1,31 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Redirect, useLocation } from 'react-router-dom'
 import Button from '../button'
+import {login} from '../../authService'
 import Fork from '../../assets/fork.svg'
 import Spoon from '../../assets/spoon.svg'
 import './login.css'
 
-import { signIn } from '../../requests/auth'
+function Login(props) {
 
-function Login() {
+    const [user, setUser] = useState("")
+    const [password, setPassword] = useState("")
+
+    const [redirectToReferrer, setRedirect] = useState(false)
 
     async function click(e) {
         e.preventDefault();
-        console.log(await signIn("Boss", "atlas@2020"))
+
+        if (await login(user, password))
+        {
+            setRedirect(true)
+        } else {
+            alert("user/pass non valide.")
+        }
     }
+
+    let { from } = { from: {pathname: "/"}};
+    if (redirectToReferrer) return <Redirect to={from} />
 
     return (
         <div className="cont">
-            <h3>Login</h3>
+            <h2>Login</h2>
             <div>
                 <img src={Fork} alt="fork" />
                 <form>
                     <span>
                         <label>Username :</label>
-                        <input type="text" />
+                        <input type="text" value={user} onChange={e => setUser(e.target.value)} />
                     </span>
                     <span>
                         <label>Password :</label>
-                        <input type="text" />
+                        <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
                     </span>
                     <Button label="Login" onClick={click} />
                 </form>

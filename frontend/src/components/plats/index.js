@@ -17,24 +17,47 @@ export default function Plats() {
     useEffect(() => {
         async function fetchData() {
             const res = await getPlat();
-            
+            //console.log(res)
             let arr = [];
             for (let i in res) {
                 arr = [...arr, ...res[i].map(e => {
+                    const choix = e.type
+                    if(choix !== 'NULL'){
                     const type = e.type? ` (${e.type})`: '';
-                    e.nom += type;
-                    return {...e, type: i};
+                    e.nom += type;}
+                    return {...e, type: i, choix: choix};
                 })]
             }
-
+            
             setPlats(arr)
         }
         fetchData()
     })
 
     function showModifier(plat) {
+        if (plat.type === "principal"){
+            
+            plat.choix = plat.nom.slice(-7, -1);
+            plat.nom = plat.nom.slice(0, -8).trimEnd();
+        }
+        
+        
+        else if(plat.type ==="entree"){
+           
+            if(plat.choix ==="soupe"){
+                plat.choix = plat.nom.slice(-6, -1);
+                plat.nom = plat.nom.slice(0, -7).trimEnd();     
+            }else if(plat.choix === "salé"){
+                plat.choix = plat.nom.slice(-5, -1);
+                plat.nom = plat.nom.slice(0, -6).trimEnd(); 
+            }else if(plat.choix === "gratin"){
+                plat.choix = plat.nom.slice(-7, -1);
+                plat.nom = plat.nom.slice(0, -8).trimEnd();
+            }
+
+        }
+       
         setShow2(true)
-        console.log(plat)
         setPlat(plat)
     }
 
@@ -43,7 +66,7 @@ export default function Plats() {
     return (
         <div className="pagePlats">
             <div>
-                <h3>Plats</h3>
+                <h2>Plats</h2>
             </div>
             <Table plats={plats} modifier={showModifier} />
             <div className="btnCont">

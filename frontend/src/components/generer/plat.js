@@ -18,7 +18,7 @@ function Plat({plat}) {
         <div className="showPlat">
             <h3>Plat {plat.nom}</h3>
             <p>type: {plat.type}</p>
-            <p>prix: {plat.prix}</p>
+            <p>prix: {plat.prix}DA</p>
             <p>ingrediants: </p>
             <div className="ingrs">
                 {ingrediants.map(e => (<span>{e.nomIngrediant}</span>))}

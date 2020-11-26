@@ -6,35 +6,29 @@ insert into plat (idPlat ,nom, prix, fixe) values
     (2,'Hmiss',200,1),
     (3,'Zaalouka ',200,1),
     (4,'Bourek poulet ou viande',100,1),
-    (5,'Chorba hamra ',350,0),
-    (6,'Mini humberger ',150,0),
-    (7,'Maadnoussia poulet',450,0),
-    (8,'Soupe de courgettes',350,0),
-    (9,'Mini pizza ',150,0),
-    (10,'Gratin d’épinards et poulet',450,0),
-    (11,'Chorba beida ',350,0),
-    (12,'Fricassée',150,0),
-    (13,'Gratin de pomme de terre poulet et fromage ',450,0),
-    (14,'Soupe de lentilles ',350,0),
-    (15,'Mini croissants',150,0),
-    (16,'Tajine djbene',450,0),
-    (17,'Soupe de légumes',350,0),
-    (18,'Batbout',150,0),
-    (19,'Gratin de courgettes',450,0),
-    (20,'Hrira',350,0),
-    (21,'Gratin aux Légumes ',450,0),
-    (22,'Cherba',350,0),
-    (23,'Croisant salé',150,0),
-    (24,'Soupe de pomme de terre',350,0),
-    (25,'Chorba beida ',350,0),
-    (26,'Brik',250,0),
-    (27,'Gratin aux légumes avec du poulet',450,0),
-    (28,'Fricassées tunisiennes ',150,0),
-    (29,'Gratin poulet et champignons ',450,0),
-    (30,'Chorba frik ',350,0),
-    (31,'Hachis Parmentier ',450,0),
-    (32,'Soupe  corail ',350,0),
-    (33,'Hachés parmantier',450,0),
+    (5,'Brik',250,1),
+    (6,'Chorba',350,0),
+    (7,'Mini humberger ',150,0),
+    (8,'Maadnoussia poulet',450,0),
+    (9,'Soupe de courgettes',350,0),
+    (10,'Mini pizza ',150,0),
+    (11,'Gratin d’épinards et poulet',450,0),
+    (12,'Chorba beida ',350,0),
+    (13,'Fricassée',150,0),
+    (14,'Gratin de pomme de terre poulet et fromage ',450,0),
+    (15,'Soupe de lentilles ',350,0),
+    (16,'Mini croissants',150,0),
+    (17,'Tajine djbene',450,0),
+    (18,'Soupe de légumes',350,0),
+    (19,'Batbout',150,0),
+    (20,'Gratin de courgettes',450,0),
+    (21,'Hrira',350,0),
+    (22,'Gratin aux Légumes ',450,0),
+    (23,'Soupe de pomme de terre',350,0),
+    (24,'Gratin poulet et champignons ',450,0),
+    (25,'Hachis Parmentier ',450,0),
+    (26,'Gratin de crevettes ',450,0),
+
   
 
 
@@ -72,8 +66,7 @@ insert into plat (idPlat ,nom, prix, fixe) values
     (75,'Brochettes de kefta avec légumes sautés ',750,0),
     (76,'Douara ',750,0),
     (77,'Tlitli boulettes de viande',650,0),
-    (78,'Les accras de poulet avec légumes sautés',750,0),
-    (79,'Rechta poulet',750,0),
+    
    
 
 
@@ -106,19 +99,21 @@ insert into plat (idPlat ,nom, prix, fixe) values
     
 /*------------------------------------------- INSERTION A LA TABLE ENTREE----------------------------------*/
 
-insert into entree (idPlat) values (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),(21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33)
+insert into entree (idPlat,type) values (1,NULL),(2,NULL),(3,NULL),(4,NULL),(5,NULL),(6,'soupe'),(7,'salé'),(8,'gratin'),(9,'soupe'),(10,'salé'),(11,'gratin'),
+(12,'soupe'),(13,'salé'),(14,'gratin'),(15,'soupe'),(16,'salé'),(17,'gratin'),(18,'soupe'),(19,'salé'),(20,'gratin'),(21,'soupe'),
+(22,'gratin'),(23,'soupe'),(24,'gratin'),(25,'gratin'),(26,'gratin');
 
 /*------------------------------------------- INSERTION A LA TABLE PRINCIPAL----------------------------------*/
 
 insert into principal (idPlat,type) values (50,'poulet'),(51,'viande'),(52,'poulet'),(53,'viande'),(54,'poulet'),
 (55,'viande'),(56,'viande'),(57,'poulet'),(58,'poulet'),(59,'viande'),(60,'viande'),(61,'poulet'),(62,'poulet'),(63,'viande'),
 (64,'viande'),(65,'poulet'),(66,'poulet'),(67,'viande'),(68,'poulet'),(69,'viande'),(70,'poulet'),(71,'viande'),(72,'viande'),
-(73,'viande'),(74,'poulet'),(75,'viande'),(76,'viande'),(77,'viande'),(78,'poulet'),(79,'poulet')
+(73,'viande'),(74,'poulet'),(75,'viande'),(76,'viande'),(77,'viande');
 
 
  
 /*------------------------------------------- INSERTION A LA TABLE DESSERT----------------------------------*/
 
 
-insert into dessert (idPlat) values (100),(101),(102),(103),(104),(105),(106),(107),(108),(109),(110),(111),(112),(113),(114),(115),(116),(117),(118),(119),(120),(121)
+insert into dessert (idPlat) values (100),(101),(102),(103),(104),(105),(106),(107),(108),(109),(110),(111),(112),(113),(114),(115),(116),(117),(118),(119),(120),(121);
 

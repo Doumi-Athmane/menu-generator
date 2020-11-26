@@ -4,6 +4,7 @@ const { plats } = require('../requets/plat/select');
 const platsNotInMenu = require('../requets/plat/select_not_in_menu');
 const ingrediantDePlat = require('../requets/plat/select_ingrediant');
 const { ajouter_plat, ajouter_ingrediants_plat , ajouter_type_plat} = require('../requets/plat/ajouter');
+const modifier = require('../requets/plat/modifier')
 
 const supprimer = require('../requets/plat/supprimer');
 
@@ -110,6 +111,19 @@ route.post('/', (req, res) => {
 
     })
 });
+
+//--------------------------------------------UPDATE---------------------------------------------------------------
+route.put('/:id', (req, res) => {
+    const { id } = req.params;
+    const { nom, prix, type, choix, fixe, ingrediants } = req.body;
+    connection.query(modifier({id, nom, prix, fixe, type, choix, ingrediants}), (err, results) => {
+        if (err) {
+            res.status(400).json(err)
+            return;
+        }
+        res.status(202).json(results)
+    })
+})
 
 //-----------------------------------------------------DELETE----------------------------------------------
 

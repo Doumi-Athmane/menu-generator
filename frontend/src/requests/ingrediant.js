@@ -14,6 +14,7 @@ export async function supp_ingrediant(id) {
 }
 
 export async function ajouter_ingrediant (nomIngrediant){
+    console.log(nomIngrediant)
     let res = await api.post(`/ingrediant/`, {nomIngrediant})
     return res.data;
 

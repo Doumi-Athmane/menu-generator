@@ -1,7 +1,12 @@
 .pagePlats {
     display: flex;
     flex-direction: column;
-    padding: 0 80px;
+}
+
+@media (min-width: 700px) {
+    .pagePlats {
+        padding: 0 80px;
+    }
 }
 
 .pagePlats div {

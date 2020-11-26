@@ -41,6 +41,7 @@ class ajouterIngrediant extends Component {
                        
                        onClick= {() =>{
                         ajouter_ingrediant(this.state.nom)
+                        .catch(e => console.log(e))
                         window.location.reload()}}
 
                         

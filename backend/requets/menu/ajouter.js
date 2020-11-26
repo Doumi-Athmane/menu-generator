@@ -1,4 +1,5 @@
-const menu = () => `insert into menu(date) values (CURDATE())`;
+const menu = () => `delete from menu where date = ADDDATE(CURDATE(), 1);
+                    insert into menu(date) values (ADDDATE(CURDATE(), 1))`;
 
 const plats_menu = (idMenu, idPlats) => {
     let query = "insert into contient values ";

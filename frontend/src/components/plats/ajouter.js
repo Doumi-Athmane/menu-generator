@@ -12,9 +12,12 @@ function Ajouter() {
     const [nom, setNom] = useState('')
     const [type, setType] = useState('entree')
     const [prix, setPrix] = useState('')
-    const [choix, setChoix] = useState('poulet')
+    const [choixPrincipal, setChoixPrincipal] = useState('poulet')
+    const [choixEntreel, setChoixEntree] = useState('NULL')
     const [fixe, setFixe] = useState(false)
     const [estPrincipal, setEstPrincipal] = useState(false)
+    const [estEntree, setEstEntree] = useState(true)
+
 
     useEffect(() => {
         async function fetchData() {
@@ -50,7 +53,7 @@ function Ajouter() {
             fixe: fixe? 1 : 0,
             type, 
             ingrediants: tags.map(e => e.key),
-            choix
+            choix : type==='entree'? choixEntreel : choixPrincipal
         };
         ajouterPlat(data)
         .then(e => {
@@ -69,16 +72,28 @@ function Ajouter() {
             <input type="text" placeholder="nom Plat" id="nom" onChange={e => setNom(e.target.value)}/>
             <select placeholder="Type" id="droplist" onChange={e => {
                 setEstPrincipal(e.target.value === "principal")
+                setEstEntree(e.target.value ==="entree")
                 setType(e.target.value)
             }}>
                 <option value="entree">entree</option>
                 <option value="principal">principal</option>
                 <option value="dessert">dessert</option>
             </select>
-            <select placeholder="Choix" id="droplist2" style={{display: estPrincipal?"inline-block":"none"}} onChange={e => setChoix(e.target.value)}>
-                <option>poulet</option>
-                <option>viande</option>
-            </select>
+            {estPrincipal?
+                (<select placeholder="Choix" id="droplist2" onChange={e => setChoixPrincipal(e.target.value)}>
+                     
+                    <option>Poulet</option>
+                    <option>Viande</option>
+                </select>):null
+            }
+            {estEntree?
+                (<select placeholder="Choix" id="droplist2" onChange={e => setChoixEntree(e.target.value)}>
+                    <option></option>
+                    <option>soupe</option>
+                    <option>salé</option>
+                    <option>gratin</option>
+                </select>):null
+            }
             <input type="text" placeholder="Prix" id="prix" onChange={e => setPrix(e.target.value)} />
             <div>
                 <label>fixe </label><input type="checkbox" onChange={e => {setFixe(e.target.checked)}}  />

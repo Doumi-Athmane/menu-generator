@@ -3,7 +3,7 @@ module.exports = (type) => {
         return `select * from plat natural join principal
                 where idPlat not in (
                     select idPlat from contient c natural join menu
-                    where DATEDIFF(now(), date) < 7
+                    where DATEDIFF(now(), date) < ${process.env.NB_DAY_MAX}
                 )`
     }
     else {
@@ -15,7 +15,7 @@ module.exports = (type) => {
                 natural join ${type}
                 where idPlat not in (
                     select idPlat from contient c natural join menu
-                    where DATEDIFF(now(), date) < 7  
+                    where DATEDIFF(now(), date) < ${process.env.NB_DAY_MAX}  
                 )`
     }
 }

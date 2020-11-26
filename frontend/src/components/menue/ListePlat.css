@@ -3,14 +3,24 @@
     flex-direction: row;
     align-items: baseline;
     margin-top: 5px;
-    justify-content: flex-start;
+    width: auto;
     margin-bottom: 30px;
+}
+
+@media (min-width :700px) {
+    .listePlat {
+        justify-content: flex-start;
+        width: 500px;
+    }
+    .titleType {
+        padding-right: 40px !important;
+    }
 }
 
 .titleType {
     flex: 2;
     margin-left: 0;
-    padding-right: 40px;
+    padding-right: 0;
 }
 
 .titleType h1 {
@@ -33,4 +43,5 @@
 .listePlats {
     display: flex;
     flex-flow: row wrap;
+    width: 100%;
 }

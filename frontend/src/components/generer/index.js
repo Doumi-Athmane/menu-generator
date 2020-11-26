@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Modal } from 'react-overlays'
-import './index.css'
+import './index_temp.css'
 import List from './listCont'
 import List2 from './doubleList'
 import Button from '../button'
@@ -46,20 +46,22 @@ function Generer() {
             <div className="title">
                 <h2>Generer un menu</h2>
             </div>
-            <div className="entrees">
-                <List title="Entrees :" items={entree} model={showModal} modifier={modif} />
-            </div>
-            <div className="barrier fork">
-                <img src={Fork} alt="fork" />
-            </div>
-            <div className="principal">
-                <List2 title="Principals :" items={principal} model={showModal} modifier={modif} />
-            </div>
-            <div className="barrier spoon">
-                <img src={Spoon} alt="spoon" /> 
-            </div>
-            <div className="desserts">
-                <List title="Desserts :" items={dessert} model={showModal} modifier={modif} />
+            <div className="slider">
+                <div className="slide entrees">
+                    <List title="Entrees :" items={entree} model={showModal} modifier={modif} />
+                </div>
+                <div className="barrier fork">
+                    <img src={Fork} alt="fork" />
+                </div>
+                <div className="slide principal">
+                    <List2 title="Principals :" items={principal} model={showModal} modifier={modif} />
+                </div>
+                <div className="barrier spoon">
+                    <img src={Spoon} alt="spoon" /> 
+                </div>
+                <div className="slide desserts">
+                    <List title="Desserts :" items={dessert} model={showModal} modifier={modif} />
+                </div>
             </div>
             <div className="btns">
                 <Button label="Generer Menu" link={`/menuJour?plats=${platsSupp}`} />

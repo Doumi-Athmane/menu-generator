@@ -16,6 +16,9 @@
 .SecondTitle {
     flex: 3;
     justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .SecondTitle h1 {
@@ -24,10 +27,11 @@
     color: #584949;
     border-radius: solid 1px #575757;
     box-shadow: #D5CFCF 1px 1px 4px;
+    margin-top: 0%;
 }
 
 .LesMenus {
-    flex: 9;
+    flex: 8;
     display: flex;
     flex-direction: row;
 }
@@ -37,13 +41,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    justify-items: center;
+    align-items: stretch;
 }
 
-.haja a {
+.haja button {
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
+    border: unset;
+    outline: unset;
+    background: unset;
     margin: 0%;
     padding: 0%;
     margin-bottom: 200px;

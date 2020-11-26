@@ -1,8 +1,18 @@
 .App {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto;
     text-align: center;
     background-color: #fafafa;
+}
+
+@media (min-width: 700px) {
+    .App {
+        grid-template-columns: auto 1fr;
+    }
+}
+
+h2 {
+    font-size: 30px;
 }
 
 a {

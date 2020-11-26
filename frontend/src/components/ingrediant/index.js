@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css'
-import ChercherIng from './chercherIngrediant'
+//import ChercherIng from './chercherIngrediant'
 import ListIngrediants from './listIngrediants'
 import AjouterIngrediant from './ajouterIngrediant'
 import {list_ingrediants } from '../../requests/ingrediant'
@@ -26,27 +26,21 @@ class index extends Component {
         this.setState({Les_ingrediants: this.state.Les_ingrediants.filter(e => e.idIngrediant !== id)})
     }
 
- 
-
-    
-
-    
-
     render() {
         return (
             <div className='allpage'>
 
                 <div className='BigTitle'>
 
-                    <h1>Ingrediants</h1>
+                    <h2>Ingrediants</h2>
 
                 </div>
 
                 <div className='contenu'>
                     <div className='listIngrediants'>
-                        <div className='chercherIng'>
+                      {/* <div className='chercherIng'>
                             <ChercherIng/>
-                        </div>
+                            </div> */}  
                         <div className='Title'>
                             <h1>Les ingrediants utilisées dans vos pats :</h1>
                             <hr/>

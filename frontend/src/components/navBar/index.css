@@ -1,9 +1,16 @@
 .NavBar {
+    display: none;
     width: 13vw;
-    display: flex;
     flex-direction: column;
     border-right: 1px solid #ccc;
     height: 100vh;
+    background-color: white;
+}
+
+@media (min-width: 700px) {
+    .NavBar {
+        display: flex;
+    }
 }
 
 .UserColumn {
@@ -18,7 +25,7 @@
     flex: 1;
 }
 
-img { 
+img {
     width: 40px
 }
 

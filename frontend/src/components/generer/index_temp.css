@@ -1,0 +1,67 @@
+.generer {
+    display: grid;
+    grid-template-rows: fit-content(200px) auto fit-content(200px);
+    height: 100vh;
+}
+
+.slider {
+    display: flex;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    flex-shrink: 0;
+}
+
+.slide {
+    height: 95%;
+    width: 99%;
+    margin: 5px;
+    flex-shrink: 0;
+    scroll-behavior: smooth;
+    scroll-snap-align: start;
+}
+
+.barrier {
+    display: none;
+}
+
+.btns {
+    padding: 25px;
+}
+
+@media (min-width: 700px) {
+    .barrier {
+        display: block;
+        margin: auto 20px;
+    }
+    .slide.entrees,
+    .slide.desserts {
+        width: 18%;
+    }
+    .principal {
+        flex: 1;
+    }
+}
+
+.hidden {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    opacity: 0.5;
+}
+
+.modal {
+    position: fixed;
+    top: 20%;
+    left: 40%;
+    width: 30%;
+    height: 60%;
+    background-color: white;
+    border-radius: 10px;
+    outline: unset;
+}

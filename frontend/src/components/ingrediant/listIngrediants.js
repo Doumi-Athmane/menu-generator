@@ -8,7 +8,7 @@ export default function listIngrediants (props) {
         <div className='listtIngrediants'>
 
             {
-                props.ingrediants.map(e => <Ingrediant nom={e.nomIngrediant} id={e.idIngrediant} delete={() => props.delete(e.idIngrediant)} />)
+                props.ingrediants.map(e => <Ingrediant nom={e.nomIngrediant} id={e.idIngrediant} key={e.idIngrediant} delete={() => props.delete(e.idIngrediant)} />)
             }
         </div>
 

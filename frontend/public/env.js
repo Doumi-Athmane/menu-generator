@@ -1,7 +1,7 @@
 window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "APPDATA": "C:\\Users\\DOUMI ATHMANE\\AppData\\Roaming",
-  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_12316_WZUGZJZQTGXDFGOP",
+  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_22108_MRAWJHSJRXSCYAVB",
   "COLORTERM": "truecolor",
   "CommonProgramFiles": "C:\\Program Files\\Common Files",
   "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
@@ -75,7 +75,7 @@ window.env = {
   "OneDrive": "C:\\Users\\DOUMI ATHMANE\\OneDrive",
   "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
   "OS": "Windows_NT",
-  "Path": "C:\\Users\\DOUMIA~1\\AppData\\Local\\Temp\\yarn--1606205389870-0.9207791004917574;E:\\Stage\\menu_generator\\frontend\\node_modules\\.bin;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Yarn\\Data\\link\\node_modules\\.bin;C:\\Program Files\\libexec\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Programs\\Python\\Python38-32\\Scripts\\;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Programs\\Python\\Python38-32\\;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Microsoft\\WindowsApps;;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Yarn\\bin;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\DOUMI ATHMANE\\AppData\\Roaming\\npm",
+  "Path": "C:\\Users\\DOUMIA~1\\AppData\\Local\\Temp\\yarn--1606379362061-0.8695986956245922;E:\\Stage\\menu_generator\\frontend\\node_modules\\.bin;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Yarn\\Data\\link\\node_modules\\.bin;C:\\Program Files\\libexec\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Programs\\Python\\Python38-32\\Scripts\\;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Programs\\Python\\Python38-32\\;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Microsoft\\WindowsApps;;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Yarn\\bin;C:\\Users\\DOUMI ATHMANE\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\DOUMI ATHMANE\\AppData\\Roaming\\npm",
   "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL",
   "PROCESSOR_ARCHITECTURE": "AMD64",
   "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 142 Stepping 10, GenuineIntel",

@@ -7,7 +7,6 @@ export  async function ajouter_menu_de_jour(idPlat) {
 
 export async function afficher_menu_de_jour(idPlats){
     let res = await api.post(`/generate/`, {idPlats})
-    console.log(res)
     return res.data;
 }
 

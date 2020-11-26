@@ -34,8 +34,12 @@ router.post('/', (req, res) => {
     // store new ingrediant
     const nomIngrediant = req.body.nomIngrediant;
 
-    connection.query(ajouter_ingrediant(nomIngrediant), (err, results) => {
+    console.log(nomIngrediant)
+    const query = ajouter_ingrediant(nomIngrediant)
+    console.log(query)    
+    connection.query(query, (err, results) => {
         if (err) {
+            console.log(err)
             res.status(400);
             res.send({ err })
         } else res.status(200).json({ data: results });

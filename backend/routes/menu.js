@@ -93,22 +93,18 @@ router.get('/:idPlat/ingrediant', (req, res) => {
 
 router.post('/', (req, res) => {
     connection.query(ajouter.menu(), (err, results) => {
-
-
-
         if (err) {
-
+            
             res.status(400);
             res.json({ err })
-
         } else {
-            connection.query(ajouter.plats_menu(results.insertId, req.body.idPlat), (err, results) => {
-
+            connection.query(ajouter.plats_menu(results[results.length-1].insertId, req.body.idPlat), (err, results2) => {
                 if (err) {
+                   
                     res.status(400);
                     res.json({ err })
 
-                } else res.send(results)
+                } else res.send(results2)
             })
         }
     })

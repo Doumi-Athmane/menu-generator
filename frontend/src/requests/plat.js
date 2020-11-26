@@ -36,3 +36,8 @@ export async function supprimer({id}) {
 
     return res.data;
 }
+
+export async function modifier({id, nom, prix, fixe, type, choix, ingrediants}) {
+    const res = await api.put(`/plat/${id}`, {nom, prix, fixe, type, choix, ingrediants});
+    return res.data;
+}

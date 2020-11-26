@@ -5,12 +5,14 @@ const generate = require('../requets/generer_menu')
 router.post('/' , (req,res)=> {
 
     const {idPlats} = req.body;
+    
 
     connection.query(generate('entree' , idPlats), (err , results1)=>{
         if (err) {
             res.status(400);
             res.json({err})
-        }else {
+        } else {
+            
             connection.query(generate('principal' ,idPlats),(err,results2)=>{
                 if (err) {
                     res.status(400);
