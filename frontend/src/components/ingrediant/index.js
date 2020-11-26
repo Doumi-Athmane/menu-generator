@@ -38,7 +38,7 @@ class index extends Component {
 
                 <div className='contenu'>
                     <div className='listIngrediants'>
-                      {/* <div className='chercherIng'>
+                        {/* <div className='chercherIng'>
                             <ChercherIng/>
                             </div> */}  
                         <div className='Title'>

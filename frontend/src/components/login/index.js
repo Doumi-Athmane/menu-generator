@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Redirect, useLocation } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Button from '../button'
 import {login} from '../../authService'
 import Fork from '../../assets/fork.svg'

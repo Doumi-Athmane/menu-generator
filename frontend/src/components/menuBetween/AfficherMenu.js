@@ -73,7 +73,7 @@ export default function MenuBetween () {
               <div className='haja'>
                 <button onClick={()=>{
                     if (new Date(dateMenu).getTime() < new Date(date1).getTime()+(1000 * 60 *60 *24)){
-                      alert('Date inexistante ')
+                      alert('Date hors limite')
                     }else{
                       getPreviousDate()
                     }
@@ -82,15 +82,15 @@ export default function MenuBetween () {
                   <img src={left} alt="left" />
                 </button> 
               </div>
-                <div className ='menus'>
-                  {loading?null:
-                    (<Menu entree={plats.entree} principal={plats.principal} dessert={plats.dessert} />)
-                  }
-                </div>
+              <div className ='menus'>
+                {loading?null:
+                  (<Menu entree={plats.entree} principal={plats.principal} dessert={plats.dessert} />)
+                }
+              </div>
               <div className='haja' >
                 <button onClick={()=>{
                   if (new Date(dateMenu).getTime() > new Date(date2).getTime()-(1000 * 60 *60 *24)){
-                    alert('Date inexistante  ')
+                    alert('Date hors limite')
                   }else{
                     getNextDate()
                   }

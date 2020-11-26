@@ -27,12 +27,12 @@ function App() {
           <div className="App">
             <NavBar />
             <Switch>
-              <ProtectedRoute path="/plats" exact component={Plats} />
-              <ProtectedRoute path="/menu" exact component={Rechercher} />
-              <ProtectedRoute path="/menuBetween" exact component={MenuBetween} />
-              <ProtectedRoute path="/menuJour" exact component={Menu} />
-              <ProtectedRoute path="/" exact component={Generer} />
-              <ProtectedRoute exact path="/ingrediant" component={ingrediant} />
+              <Route path="/plats" exact component={Plats} />
+              <Route path="/menu" exact component={Rechercher} />
+              <Route path="/menuBetween" exact component={MenuBetween} />
+              <Route path="/menuJour" exact component={Menu} />
+              <Route path="/" exact component={Generer} />
+              <Route exact path="/ingrediant" component={ingrediant} />
             </Switch>
           </div>
         </Route>

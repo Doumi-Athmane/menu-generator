@@ -13,6 +13,12 @@
     }
 }
 
+.NavBar>button {
+    position: absolute;
+    left: 1vw;
+    top: 1vw;
+}
+
 .UserColumn {
     flex: 1;
 }

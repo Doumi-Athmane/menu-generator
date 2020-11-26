@@ -58,11 +58,11 @@ function Ajouter() {
         ajouterPlat(data)
         .then(e => {
             console.log(e)
-            alert('added!');
+            alert('plat ajouté!');
         })
         .catch(e => {
             console.log(e)
-            alert('error!')
+            alert('erreur: '+e)
         })
     }
 

@@ -57,7 +57,7 @@ class PageMenu extends Component {
             await ajouter_menu_de_jour(ids)
             alert("Menu ajouté.")
         } catch(e) {
-            alert("error")
+            alert("erreur: " + e)
         }
 
         
@@ -88,8 +88,30 @@ class PageMenu extends Component {
             return `${prev}${curr.nom} ${pts}.. ${curr.prix}DA \n`
         }, "")
         
-        navigator.clipboard.writeText(text)
-            .then(() => alert("copied to clipboard!"));
+        if (typeof(navigator.clipboard)=='undefined') {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position="fixed";  //avoid scrolling to bottom
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+        
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'copié' : 'non copié';
+                alert("menu " + msg); 
+            } catch (err) {
+                alert('pas possible de copier le menu: ', err);
+            }
+        
+            document.body.removeChild(textArea)            
+            return;
+        }
+        navigator.clipboard.writeText(text).then(function() {
+            alert(`menu copié!`);         
+        }, function(err) {
+            alert('menu non copié!', err);
+        });
     }
 
     render() {

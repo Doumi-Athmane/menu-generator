@@ -16,6 +16,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     })
 
     if (!loading)
+        
         return (
             <Route
                 {...rest}

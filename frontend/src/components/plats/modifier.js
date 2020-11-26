@@ -62,11 +62,11 @@ function Modifier({plat}) {
 
         modifierPlat(data)
         .then(e => {
-            alert('added!');
+            alert('plat modifié!');
         })
         .catch(e => {
             
-            alert('error!')
+            alert('erreur: '+e)
         })
     }
 
