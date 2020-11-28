@@ -80,7 +80,7 @@ export default function MenuBetween () {
           </div>
           <div className = 'SecondTitle'>
               
-              <h1> {new Date(dateMenu).toUTCString()}</h1>
+              <h1> {new Date(dateMenu).toDateString()}</h1>
 
           </div>
       </div>

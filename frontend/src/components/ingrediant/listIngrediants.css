@@ -1,7 +1,4 @@
 .listtIngrediants {
     height: 95%;
     width: 100%;
-    scrollbar-width: 0px;
-    padding-right: 80px;
-    box-sizing: content-box;
 }

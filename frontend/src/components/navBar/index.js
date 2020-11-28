@@ -54,6 +54,7 @@ export default class NavBar extends Component {
                 </div>
                 <div className="test">
                     <button onClick={this.toggleNav}><img src={menu} alt="menu" /></button>
+                    {/* <div className="backdoor"></div> */}
                 </div>
             </div>
         )

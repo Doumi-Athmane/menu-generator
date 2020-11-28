@@ -6,6 +6,7 @@
     height: 100vh;
     background-color: white;
     transition: left 300ms ease-out;
+    z-index: 9999;
 }
 
 .NavBar.closed {
@@ -62,6 +63,15 @@ h6 {
 .test img {
     width: 22px;
     height: 27px;
+}
+
+.backdoor {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 999;
 }
 
 @media (min-width: 700px) {

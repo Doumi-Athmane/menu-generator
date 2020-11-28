@@ -3,10 +3,11 @@ import { ingrediants as getIngs } from '../../requests/plat'
 import './plat.css'
 
 function Plat({plat}) {
-
+    
     const [ingrediants, setIngrediants] = useState([])
 
     useEffect(() => {
+        console.log(plat)
         async function fetchData() {
             const t = await getIngs(plat.idPlat);
             setIngrediants(t);
@@ -14,12 +15,12 @@ function Plat({plat}) {
         fetchData().catch(err => {
             console.log(err)
         })
-    }, [plat.idPlat])
+    }, [plat])
 
     return (
         <div className="showPlat">
             <h3>Plat {plat.nom}</h3>
-            <p>type: {plat.type}</p>
+            <p>type: {plat.type? plat.type: plat.fixe? "fixe": "dessert"}</p>
             <p>prix: {plat.prix}DA</p>
             <p>ingrediants: </p>
             <div className="ingrs">

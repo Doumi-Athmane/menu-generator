@@ -38,7 +38,6 @@
 .Elements {
     flex: 12;
     margin-top: 0%;
-    max-height: 450px;
     overflow: hidden;
     position: relative;
 }
@@ -75,6 +74,11 @@
 @media (min-width: 700px) {
     .Elements {
         padding-right: 50px;
+        max-height: 450px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        padding-right: 28px;
+        box-sizing: content-box;
     }
     .contenu {
         flex-direction: row;
@@ -87,6 +91,7 @@
     
     .ligne {
         flex: 1;
+        display: block;
     }
     .ajouterIngrediant {
         padding-top: 70px;
