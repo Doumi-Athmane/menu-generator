@@ -16,7 +16,7 @@
 .contenu {
     flex: 9;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .listIngrediants {
@@ -44,7 +44,7 @@
 }
 
 .ligne {
-    flex: 1;
+    display: none;
 }
 
 .ligne hr {
@@ -59,16 +59,36 @@
 }
 
 .ajouterIngrediant {
-    flex: 7;
     display: flex;
     flex-direction: column;
 }
 
 .Title hr {
-    width: 240px;
-    margin-left: 190px;
     height: 2.5px;
     background-color: #979797;
     box-shadow: #D5CFCF 2px 2px 4px;
     align-self: flex-end;
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media (min-width: 700px) {
+    .Elements {
+        padding-right: 50px;
+    }
+    .contenu {
+        flex-direction: row;
+    }
+
+    .Title hr {
+        width: 240px;
+        margin-left: 190px;
+    }
+    
+    .ligne {
+        flex: 1;
+    }
+    .ajouterIngrediant {
+        padding-top: 70px;
+    }
 }

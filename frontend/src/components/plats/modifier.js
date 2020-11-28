@@ -4,29 +4,35 @@ import Button from '../button'
 import { list_ingrediants } from '../../requests/ingrediant'
 import { ingrediants } from '../../requests/plat'
 import { modifier as modifierPlat } from '../../requests/plat';
+import axios from 'axios'
 import './ajouter.css'
 
-function Modifier({plat}) {
+function Modifier({plat, refresh}) {
 
     const [tags, setTags] = useState([]);
     const [suggestions, setSuggestions] = useState([]);
     const [nom, setNom] = useState(plat.nom)
     const [type, setType] = useState(plat.type)
     const [prix, setPrix] = useState(plat.prix)
-    const [choix, setChoix] = useState(plat.choix)
+    const [choixPrincipal, setChoixPrincipal] = useState(plat.type==="principal"?plat.choix:"poulet")
+    const [choixEntree, setChoixEntree] = useState(plat.type==="entree"?plat.choix+"":"null")
     //console.log(choix)
     const [fixe, setFixe] = useState(!!plat.fixe)
     const [estPrincipal, setEstPrincipal] = useState(plat.type === "principal")
     const [estEntree, setEstEntree] = useState(plat.type === "entree")
 
     useEffect(() => {
+        const cancelToken = axios.CancelToken;
+        const source = cancelToken.source();
         async function fetchData() {
             let res = await list_ingrediants()
             setSuggestions(res.map(e => ({text: e.nomIngrediant, id: e.nomIngrediant, key: e.idIngrediant})))
-            let res2 = await ingrediants(plat.idPlat);
+            let res2 = await ingrediants(plat.idPlat, source);
             setTags(res2.map(e => ({text: e.nomIngrediant, id: e.nomIngrediant, key: e.idIngrediant.toString()})))
         }
         fetchData()
+        .catch(err => {})
+        return () => source.cancel("axios task cancelled!");
     }, [plat.idPlat])
 
     function handleDelete(i) {
@@ -56,12 +62,15 @@ function Modifier({plat}) {
             prix: parseInt(prix), 
             fixe: fixe? 1 : 0,
             type, 
-            choix,
+            choix: type === "entree"?choixEntree:choixPrincipal,
             ingrediants: tags.map(e => e.key),
         };
 
+        console.log(data);
+
         modifierPlat(data)
         .then(e => {
+            refresh()
             alert('plat modifié!');
         })
         .catch(e => {
@@ -87,8 +96,8 @@ function Modifier({plat}) {
                (<select 
                 placeholder="Choix" 
                 id="droplist2" 
-                onChange={e => setChoix(e.target.value)}
-                value={choix} >
+                onChange={e => setChoixPrincipal(e.target.value)}
+                value={choixPrincipal} >
                 <option value="poulet">poulet</option>
                 <option value="viande">viande</option>
 
@@ -100,14 +109,19 @@ function Modifier({plat}) {
                 (<select 
                 placeholder="Choix" 
                 id="droplist2" 
-                onChange={e => setChoix(e.target.value)}
-                value={choix} >
+                onChange={e => {
+                    if(fixe)
+                        setChoixEntree('null');
+                    else
+                        setChoixEntree(e.target.value);
+                }}
+                value={choixEntree} >
+                            <option value="null">Null</option>
                             <option value="soupe">Soupe</option>
                             <option value="salé">Salé</option>
                             <option value="gratin">Gratin</option>
 
-                </select>) : null
-                        
+                </select>) : null 
             }
             
             
@@ -115,7 +129,11 @@ function Modifier({plat}) {
             <input type="text" placeholder="Prix" id="prix" onChange={e => setPrix(e.target.value)} value={prix} />
             <div>
                 <label>fixe </label>
-                <input type="checkbox" onChange={e => {setFixe(e.target.checked)}} checked={fixe} />
+                <input type="checkbox" onChange={e => {
+                    if(e.target.checked)
+                        setChoixEntree('null');
+                    setFixe(e.target.checked)
+                }} checked={fixe} />
             </div>
             <ReactTags
                 tags={tags}

@@ -1,16 +1,19 @@
 .NavBar {
-    display: none;
-    width: 13vw;
+    position: fixed;
+    width: 50vw;
     flex-direction: column;
     border-right: 1px solid #ccc;
     height: 100vh;
     background-color: white;
+    transition: left 300ms ease-out;
 }
 
-@media (min-width: 700px) {
-    .NavBar {
-        display: flex;
-    }
+.NavBar.closed {
+    left: -50vw;
+}
+
+.NavBar.open {
+    left: 0;
 }
 
 .NavBar>button {
@@ -38,4 +41,36 @@ img {
 h6 {
     margin: 0;
     padding: 0;
+}
+
+.test {
+    position: absolute;
+    display: block;
+    right: -50px;
+    top: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+.test button {
+    outline: unset;
+    background-color: unset;
+    background-color: #eee;
+    border: 1px solid #979797;
+}
+
+.test img {
+    width: 22px;
+    height: 27px;
+}
+
+@media (min-width: 700px) {
+    .NavBar {
+        position: unset;
+        display: flex;
+        width: 13vw;
+    }
+    .test {
+        display: none;
+    }
 }

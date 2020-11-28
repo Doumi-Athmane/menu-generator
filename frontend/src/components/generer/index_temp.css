@@ -43,6 +43,13 @@
     .principal {
         flex: 1;
     }
+
+    .modal {
+        top: 10% !important;
+        left: 35%;
+        width: 35% !important;
+        margin: 0 !important;
+    }
 }
 
 .hidden {
@@ -57,10 +64,10 @@
 
 .modal {
     position: fixed;
-    top: 20%;
-    left: 40%;
-    width: 30%;
-    height: 60%;
+    top: 0;
+    width: 75%;
+    height: 75%;
+    margin: 60px;
     background-color: white;
     border-radius: 10px;
     outline: unset;

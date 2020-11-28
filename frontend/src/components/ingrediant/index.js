@@ -14,12 +14,20 @@ class index extends Component {
                 
     constructor() {
         super()
+        this.deleteIng = this.deleteIng.bind(this)
+        this.refresh = this.refresh.bind(this)
+       
+    }
+
+    componentDidMount() {
+        this.refresh()
+    }
+
+    refresh() {
         let GetIng = async () => {
             this.setState({ Les_ingrediants : await list_ingrediants()})    
-        }  
-       GetIng()
-       this.deleteIng = this.deleteIng.bind(this)
-       
+        }
+        GetIng().catch(err => {})
     }
 
     deleteIng(id) {
@@ -56,8 +64,7 @@ class index extends Component {
 
                     </div>
                     <div className='ajouterIngrediant'>
-                        <AjouterIngrediant  />
-
+                        <AjouterIngrediant refresh={this.refresh} />
                     </div>
 
                 </div>

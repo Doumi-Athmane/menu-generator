@@ -7,21 +7,21 @@ import { ajouter_ingrediant} from '../../requests/ingrediant'
 
 class ajouterIngrediant extends Component {
 
-    state = {
-        nom :''
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            nom :''
+        }
     }
 
-   
+    
 
     render() {
 
         return (
             <div className='AjouterPage'>
-
                 <div className='ajouterIng'>
-                    <br/>
-                    <br/>
-                    <br/>
                     <h1>Ajouter ingrediant :</h1>
                     <hr/>
                 </div>
@@ -29,23 +29,18 @@ class ajouterIngrediant extends Component {
                 <div className='inputIng'>
                     
                     <div><p>Le nom de l'ingrediant :</p></div>
-                    <input onChange ={e => this.setState ({ nom : e.target.value})} 
-                           
-                           
-                    />
+                    <input onChange={e => this.setState ({ nom : e.target.value})} value={this.state.nom} />
 
                 </div>
 
                 <div className='btnAjouter'>
                     <AjouterBtn label ='Ajouter' 
-                       
-                       onClick= {() =>{
-                        ajouter_ingrediant(this.state.nom)
-                        .catch(e => console.log(e))
-                        window.location.reload()}}
-
-                        
-                     />
+                        onClick= {() =>{
+                            ajouter_ingrediant(this.state.nom)
+                            .then(e => {this.setState({ nom: ""});this.props.refresh()})
+                            .catch(e => console.log(e))
+                        }}
+                    />
                 </div>
 
                 

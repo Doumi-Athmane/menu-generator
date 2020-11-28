@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import User from './user'
 import PageBtn from './mainBtn'
-import SettingsBtn from './secondBtn'
+//import SettingsBtn from './secondBtn'
 import Generer from '../../assets/generate.svg'
 import Menu from '../../assets/menu.svg'
 import Plat from '../../assets/dish.svg'
 import Ingrediant from '../../assets/vegetable.svg'
-import Parametres from '../../assets/preference.svg'
-import Logout from '../../assets/logout.svg'
+import menu from '../../assets/hamburger-menu.svg'
+//import Parametres from '../../assets/preference.svg'
+//import Logout from '../../assets/logout.svg'
 import './index.css'
 import {logout} from '../../authService'
 
@@ -17,10 +18,12 @@ export default class NavBar extends Component {
         super(props);
         this.props = props;
         this.state = {
-            redirect: false
+            redirect: false,
+            closed: true
         }
 
         this.performLogout = this.performLogout.bind(this)
+        this.toggleNav = this.toggleNav.bind(this)
     }
 
     performLogout() {
@@ -28,10 +31,14 @@ export default class NavBar extends Component {
         this.setState({redirect: true})
     }
 
+    toggleNav() {
+        this.setState({ closed: !this.state.closed })
+    }
+
     render() {
         if (this.state.redirect) return <Redirect to="/" />
         return (
-            <div className="NavBar">
+            <div className={`NavBar ${this.state.closed?"closed":"open"}`}>
                 <div className="UserColumn">
                     <User name="admin"></User>
                 </div>
@@ -43,7 +50,10 @@ export default class NavBar extends Component {
                 </div>
                 <div className="LogoutColumn">
                     {/* <SettingsBtn icon={Parametres} text="Parametres" /> */}
-                    <SettingsBtn icon={Logout} text="deconnexion" onClick={this.performLogout} />
+                    {/* <SettingsBtn icon={Logout} text="deconnexion" onClick={this.performLogout} /> */}
+                </div>
+                <div className="test">
+                    <button onClick={this.toggleNav}><img src={menu} alt="menu" /></button>
                 </div>
             </div>
         )

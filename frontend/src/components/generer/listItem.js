@@ -19,11 +19,11 @@ export default function Item(props) {
         }
     }
     return (
-        <button className={`item ${exclude}`} onClick={click}>
+        <div className={`item ${exclude}`} onClick={click}>
             <p>{props.plat.nom}</p>
             <button>
                 <img src={Stop} alt="remove" onClick={click2} />
             </button>
-        </button>
+        </div>
     )
 }

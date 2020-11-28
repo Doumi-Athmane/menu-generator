@@ -29,6 +29,10 @@ class PageMenu extends Component {
             loading: true
         }
 
+        this.copier = this.copier.bind(this)
+    }
+
+    componentDidMount() {
         var location = window.location.href
         
         
@@ -39,8 +43,6 @@ class PageMenu extends Component {
         this.AfficherMenuJour(idplats).then(() => {
             this.GetIngrediant().then(() => this.setState({loading: false}))  
         })
-
-        this.copier = this.copier.bind(this)
     }
     
     AjouterMenuJour = async ()  => {

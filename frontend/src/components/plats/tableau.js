@@ -5,7 +5,7 @@ import Row from './row'
 import Arrow from '../../assets/arrow-down-sign.svg'
 import './tableau.css'
 
-export default function Tableau({ plats, modifier }) {
+export default function Tableau({ plats, modifier, refresh }) {
 
     const [page, setPage] = useState(1)
 
@@ -44,7 +44,7 @@ export default function Tableau({ plats, modifier }) {
                         <th></th>
                     </tr>
                     {platsPage && platsPage.map(e => (
-                        <Row plat={e} key={e.idPlat} modifier={modifier} />
+                        <Row plat={e} key={e.idPlat} modifier={modifier} refresh={refresh} />
                     ))}
                 </tbody>
             </table>

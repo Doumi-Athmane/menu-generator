@@ -4,12 +4,12 @@ import './row.css'
 import Delete from '../../assets/material-delete.svg'
 import Pencil from '../../assets/awesome-pencil-alt.svg'
 
-export default function Row({plat, modifier}) {
+export default function Row({plat, modifier, refresh }) {
 
     function onDelete() {
         supprimer({id:plat.idPlat})
         .then(e => {
-
+            refresh()
         })
         .catch(e => {
             alert(e);

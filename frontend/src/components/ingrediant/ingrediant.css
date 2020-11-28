@@ -1,6 +1,6 @@
 .ingrediant {
     width: auto;
-    height: 20px;
+    height: fit-content;
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -11,12 +11,12 @@
 .ingrediant p {
     flex: 3;
     font-size: 18px;
+    margin: 0;
 }
 
 .ingrediant a {
     width: 20px;
     height: 20px;
-    margin-top: 20px;
     margin-right: 50px;
 }
 

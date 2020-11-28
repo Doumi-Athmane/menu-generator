@@ -11,8 +11,10 @@ function Plat({plat}) {
             const t = await getIngs(plat.idPlat);
             setIngrediants(t);
         }
-        fetchData()
-    })
+        fetchData().catch(err => {
+            console.log(err)
+        })
+    }, [plat.idPlat])
 
     return (
         <div className="showPlat">

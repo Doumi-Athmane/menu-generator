@@ -16,7 +16,6 @@ route.get('/', (req, res) => {
     // return tout les entrees de la table plats
 
     connection.query(plats(req.query.type), (err, results) => {
-
         if (err) {
             res.status(400);
             res.json({ err })
@@ -90,13 +89,17 @@ route.post('/', (req, res) => {
             res.status(400);
             res.json({ err, results })
         } else {
-
             connection.query(ajouter_type_plat(results.insertId,type,choix),(err,results2)=> {
                 if (err) {
                     res.status(400);
                     res.json({ err, results2 })
                 }else {
                     const ingrediants = req.body.ingrediants
+                    if (ingrediants.length === 0)
+                    {
+                        res.send(results2);
+                        return;
+                    }
                     connection.query(ajouter_ingrediants_plat(results.insertId, ingrediants), (err, results3) => {
                         if (err) {
                             res.status(400);
@@ -116,8 +119,10 @@ route.post('/', (req, res) => {
 route.put('/:id', (req, res) => {
     const { id } = req.params;
     const { nom, prix, type, choix, fixe, ingrediants } = req.body;
+    console.log(req.body)
     connection.query(modifier({id, nom, prix, fixe, type, choix, ingrediants}), (err, results) => {
         if (err) {
+            console.log(err)
             res.status(400).json(err)
             return;
         }

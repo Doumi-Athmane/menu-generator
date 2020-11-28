@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     if (token == null) return res.json({status: 401}) // if there isn't any token
 
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) {
+        if (err) { 
             
              return res.json({status: 403})
         }

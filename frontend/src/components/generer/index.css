@@ -61,14 +61,3 @@
     background-color: #000;
     opacity: 0.5;
 }
-
-.modal {
-    position: fixed;
-    top: 20%;
-    left: 40%;
-    width: 30%;
-    height: 60%;
-    background-color: white;
-    border-radius: 10px;
-    outline: unset;
-}

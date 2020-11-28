@@ -11,7 +11,7 @@ CREATE TABLE Ingrediant(
         idIngrediant Int  Auto_increment  NOT NULL ,
         nomIngrediant Varchar (100) NOT NULL
 	,CONSTRAINT Ingrediant_PK PRIMARY KEY (idIngrediant)
-)ENGINE=InnoDB;
+)ENGINE=InnoDB CHARACTER SET utf8;
 
 
 #------------------------------------------------------------
@@ -24,7 +24,7 @@ CREATE TABLE Plat(
         prix   Int NOT NULL ,
         fixe   Bool NOT NULL
 	,CONSTRAINT Plat_PK PRIMARY KEY (idPlat)
-)ENGINE=InnoDB;
+)ENGINE=InnoDB CHARACTER SET utf8;
 
 
 #------------------------------------------------------------
@@ -35,7 +35,7 @@ CREATE TABLE Menu(
         idMenu Int  Auto_increment  NOT NULL ,
         date   Date NOT NULL
 	,CONSTRAINT Menu_PK PRIMARY KEY (idMenu)
-)ENGINE=InnoDB;
+)ENGINE=InnoDB CHARACTER SET utf8;
 
 
 #------------------------------------------------------------
@@ -48,7 +48,7 @@ CREATE TABLE Admin(
         prenom     Varchar (50) NOT NULL ,
         motDePasse Varchar (50) NOT NULL
 	,CONSTRAINT Admin_PK PRIMARY KEY (idAdmin)
-)ENGINE=InnoDB;
+)ENGINE=InnoDB CHARACTER SET utf8;
 
 
 #------------------------------------------------------------
@@ -61,7 +61,7 @@ CREATE TABLE Entree(
 	,CONSTRAINT Entree_PK PRIMARY KEY (idPlat)
 
 	,CONSTRAINT Entree_Plat_FK FOREIGN KEY (idPlat) REFERENCES Plat(idPlat) on delete cascade
-)ENGINE=InnoDB;
+)ENGINE=InnoDB CHARACTER SET utf8;
 
 
 #------------------------------------------------------------
@@ -73,7 +73,7 @@ CREATE TABLE Dessert(
 	,CONSTRAINT Dessert_PK PRIMARY KEY (idPlat)
 
 	,CONSTRAINT Dessert_Plat_FK FOREIGN KEY (idPlat) REFERENCES Plat(idPlat) on delete cascade
-)ENGINE=InnoDB;
+)ENGINE=InnoDB CHARACTER SET utf8;
 
 
 #------------------------------------------------------------
@@ -86,7 +86,7 @@ CREATE TABLE Principal(
 	,CONSTRAINT Principal_PK PRIMARY KEY (idPlat)
 
 	,CONSTRAINT Principal_Plat_FK FOREIGN KEY (idPlat) REFERENCES Plat(idPlat) on delete cascade
-)ENGINE=InnoDB;
+)ENGINE=InnoDB CHARACTER SET utf8;
 
 
 #------------------------------------------------------------
@@ -96,13 +96,11 @@ CREATE TABLE Principal(
 CREATE TABLE Composer(
         idIngrediant Int NOT NULL ,
         idPlat        Int NOT NULL ,
-        quantite      Int NOT NULL ,
-        unite         Char (2) NOT NULL
-	,CONSTRAINT Composer_PK PRIMARY KEY (idIngrediant,idPlat)
+        CONSTRAINT Composer_PK PRIMARY KEY (idIngrediant,idPlat)
 
 	,CONSTRAINT Composer_Ingrediant_FK FOREIGN KEY (idIngrediant) REFERENCES Ingrediant(idIngrediant) on delete cascade
 	,CONSTRAINT Composer_Plat0_FK FOREIGN KEY (idPlat) REFERENCES Plat(idPlat) on delete cascade
-)ENGINE=InnoDB;
+)ENGINE=InnoDB CHARACTER SET utf8;
 
 
 #------------------------------------------------------------
@@ -116,7 +114,7 @@ CREATE TABLE Creer(
 
 	,CONSTRAINT Creer_Plat_FK FOREIGN KEY (idPlat) REFERENCES Plat(idPlat) on delete cascade
 	,CONSTRAINT Creer_Admin0_FK FOREIGN KEY (idAdmin) REFERENCES Admin(idAdmin) on delete cascade
-)ENGINE=InnoDB;
+)ENGINE=InnoDB CHARACTER SET utf8;
 
 
 #------------------------------------------------------------
@@ -130,7 +128,7 @@ CREATE TABLE Generer(
 
 	,CONSTRAINT Generer_Menu_FK FOREIGN KEY (idMenu) REFERENCES Menu(idMenu) on delete cascade
 	,CONSTRAINT Generer_Admin0_FK FOREIGN KEY (idAdmin) REFERENCES Admin(idAdmin) on delete cascade
-)ENGINE=InnoDB;
+)ENGINE=InnoDB CHARACTER SET utf8;
 
 
 #------------------------------------------------------------
@@ -144,4 +142,4 @@ CREATE TABLE Contient(
 
 	,CONSTRAINT Contient_Plat_FK FOREIGN KEY (idPlat) REFERENCES Plat(idPlat) on delete cascade
 	,CONSTRAINT Contient_Menu0_FK FOREIGN KEY (idMenu) REFERENCES Menu(idMenu) on delete cascade
-)ENGINE=InnoDB;
+)ENGINE=InnoDB CHARACTER SET utf8;

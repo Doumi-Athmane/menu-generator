@@ -15,16 +15,20 @@ export default function Plats() {
     const [plats, setPlats] = useState([]);
 
     useEffect(() => {
+        refresh()
+    }, [])
+
+    function refresh() {
         async function fetchData() {
             const res = await getPlat();
-            //console.log(res)
             let arr = [];
             for (let i in res) {
                 arr = [...arr, ...res[i].map(e => {
                     const choix = e.type
-                    if(choix !== 'NULL'){
-                    const type = e.type? ` (${e.type})`: '';
-                    e.nom += type;}
+                    if(choix !== null){
+                        const type = e.type? ` (${e.type})`: '';
+                        e.nom += type;
+                    }
                     return {...e, type: i, choix: choix};
                 })]
             }
@@ -32,7 +36,7 @@ export default function Plats() {
             setPlats(arr)
         }
         fetchData()
-    })
+    }
 
     function showModifier(plat) {
         if (plat.type === "principal"){
@@ -68,7 +72,7 @@ export default function Plats() {
             <div>
                 <h2>Plats</h2>
             </div>
-            <Table plats={plats} modifier={showModifier} />
+            <Table plats={plats} modifier={showModifier}  refresh={refresh} />
             <div className="btnCont">
                 <Button label="Ajouter Nouveau" onClick={() => setShow(true)} />
             </div>
@@ -79,7 +83,7 @@ export default function Plats() {
                 aria-labelledby="modal-label"
                 className="modal"
             >
-                <Ajouter />
+                <Ajouter refresh={refresh} />
             </Modal>
             <Modal 
                 show={show2}
@@ -88,7 +92,7 @@ export default function Plats() {
                 aria-labelledby="modal-label"
                 className="modal"
             >
-                <Modifier plat={plat} />
+                <Modifier plat={plat} refresh={refresh} />
             </Modal>
         </div>
     )

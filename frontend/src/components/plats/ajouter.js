@@ -3,9 +3,10 @@ import { WithContext as ReactTags } from 'react-tag-input'
 import Button from '../button'
 import { list_ingrediants } from '../../requests/ingrediant'
 import { ajouter as ajouterPlat } from '../../requests/plat';
+import axios from 'axios'
 import './ajouter.css'
 
-function Ajouter() {
+function Ajouter({refresh}) {
 
     const [tags, setTags] = useState([]);
     const [suggestions, setSuggestions] = useState([]);
@@ -13,19 +14,23 @@ function Ajouter() {
     const [type, setType] = useState('entree')
     const [prix, setPrix] = useState('')
     const [choixPrincipal, setChoixPrincipal] = useState('poulet')
-    const [choixEntreel, setChoixEntree] = useState('NULL')
+    const [choixEntree, setChoixEntree] = useState('null')
     const [fixe, setFixe] = useState(false)
     const [estPrincipal, setEstPrincipal] = useState(false)
     const [estEntree, setEstEntree] = useState(true)
 
 
     useEffect(() => {
+        const cancelToken = axios.CancelToken;
+        const source = cancelToken.source();
         async function fetchData() {
-            let res = await list_ingrediants()
+            let res = await list_ingrediants(source)
             setSuggestions(res.map(e => ({text: e.nomIngrediant, id: e.nomIngrediant, key: e.idIngrediant})))
         }
         fetchData()
-    })
+        .catch(err => {})
+        return () => source.cancel("axios task cancelled")
+    }, [])
 
     function handleDelete(i) {
         setTags(tags.filter((e, id) => id !== i))
@@ -53,11 +58,12 @@ function Ajouter() {
             fixe: fixe? 1 : 0,
             type, 
             ingrediants: tags.map(e => e.key),
-            choix : type==='entree'? choixEntreel : choixPrincipal
+            choix : type==='entree'? choixEntree : choixPrincipal
         };
         ajouterPlat(data)
         .then(e => {
-            console.log(e)
+            //console.log(e)
+            refresh()
             alert('plat ajouté!');
         })
         .catch(e => {
@@ -82,13 +88,18 @@ function Ajouter() {
             {estPrincipal?
                 (<select placeholder="Choix" id="droplist2" onChange={e => setChoixPrincipal(e.target.value)}>
                      
-                    <option>Poulet</option>
-                    <option>Viande</option>
+                    <option value="poulet">Poulet</option>
+                    <option value="viande">Viande</option>
                 </select>):null
             }
             {estEntree?
-                (<select placeholder="Choix" id="droplist2" onChange={e => setChoixEntree(e.target.value)}>
-                    <option></option>
+                (<select placeholder="Choix" id="droplist2" value={choixEntree} onChange={e => {
+                    if (fixe)
+                        setChoixEntree("null")
+                    else
+                        setChoixEntree(e.target.value)
+                }}>
+                    <option>null</option>
                     <option>soupe</option>
                     <option>salé</option>
                     <option>gratin</option>
@@ -96,7 +107,11 @@ function Ajouter() {
             }
             <input type="text" placeholder="Prix" id="prix" onChange={e => setPrix(e.target.value)} />
             <div>
-                <label>fixe </label><input type="checkbox" onChange={e => {setFixe(e.target.checked)}}  />
+                <label>fixe </label><input type="checkbox" onChange={e => {
+                    if(e.target.checked)
+                        setChoixEntree("null");
+                    setFixe(e.target.checked)
+                }}  />
             </div>
             <ReactTags
                 tags={tags}

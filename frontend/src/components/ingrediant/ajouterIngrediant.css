@@ -6,7 +6,7 @@
 
 .ajouterIng {
     flex: 1;
-    margin-right: 200px;
+    margin: 0;
 }
 
 .ajouterIng h1 {
@@ -14,25 +14,24 @@
 }
 
 .ajouterIng hr {
-    width: 170px;
-    margin-left: 85px;
     height: 2.5px;
     background-color: #979797;
     box-shadow: #D5CFCF 2px 2px 4px;
     align-self: flex-end;
+    width: 60%;
+    margin: 0 auto;
 }
 
 .inputIng {
     flex: 4;
-    margin-top: 65px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
 }
 
 .inputIng div {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    display: none;
 }
 
 .inputIng p {
@@ -43,17 +42,53 @@
 .inputIng input {
     width: 280px;
     height: 50px;
-    margin-right: 80px;
-    margin-top: 20px;
     border: solid 0.5px #979797;
     border-radius: 20px;
     box-shadow: #837a7a 2px 2px 4px;
+    margin: 0;
 }
 
 .btnAjouter {
     flex: 3;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .btnAjouter :nth-child(1) {
-    margin-right: 80px;
+    margin: 0;
+}
+
+@media (min-width: 700px) {
+    .ajouterIng {
+        margin-right: 200px;
+    }
+
+    .ajouterIng hr {
+        width: 170px;
+        margin-left: 85px;
+        height: 2.5px;
+        background-color: #979797;
+        box-shadow: #D5CFCF 2px 2px 4px;
+        align-self: flex-end;
+    }
+
+    .inputIng {
+        margin-top: 65px;
+        align-items: inherit;
+    }
+
+    .inputIng div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .inputIng input {
+        margin-right: 80px;
+        margin-top: 20px;
+    }
+
+    .btnAjouter :nth-child(1) {
+        margin-right: 80px;
+    }
 }

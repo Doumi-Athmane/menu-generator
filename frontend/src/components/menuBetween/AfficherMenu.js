@@ -5,62 +5,53 @@ import Menu from '../menu'
 import left from '../../assets/left.svg'
 import right from '../../assets/right.svg'
 import {
-    
-    useLocation
-  } from "react-router-dom";
-  
-
-
+  useLocation
+} from "react-router-dom";
 
 export default function MenuBetween () {
 
-  let query = new URLSearchParams(useLocation().search);
-
-  const [date1 ] = useState(query.get("date1"))
-  const [date2 ] = useState(query.get("date2"))
-  const [dateMenu , setDate] = useState(date1)
+  const [dateMenu , setDate] = useState("")
   const [loading, setLoading] = useState(true)
+  const [menus, setMenus] = useState([])
   const [plats, setPlats] = useState([])
+  const [idMenu, setIdMenu] = useState(0)
 
-  function getPreviousDate ()  {
-    const selectedDate  = dateMenu
-
-    const currentDayInMilli = new Date(selectedDate)
-    const oneDay = 1000 * 60 *60 *24
-    const previousDayInMilli = currentDayInMilli - oneDay
-    const previousDate = new Date(previousDayInMilli)
-    setDate(previousDate.getFullYear() + "-"+ parseInt(previousDate.getMonth()+1) +"-"+previousDate.getDate())
-
-  }
-
-  function getNextDate (){
-    const  selectedDate = dateMenu
-
-    const currentDayInMilli = new Date(selectedDate)
-    const oneDay = 1000 * 60 *60 *24
-    const nextDayInMilli = currentDayInMilli.getTime() + oneDay
-    const nextDate = new Date(nextDayInMilli)
-
-    setDate(nextDate.getFullYear() + "-"+ parseInt(nextDate.getMonth()+1) +"-"+nextDate.getDate())
-
-  }
-  
-  const Getid = async () => {
-    let t = await list_menu(dateMenu)
-  
-    return t
-  }  
-
-  const GetMenu = async (e) => {
-    if(e.length !== 0){
-        setPlats(await plat_menu(e[0].idMenu)) 
-    }
-    
-  }
+  const query = new URLSearchParams(useLocation().search);
+  const date1 = query.get("date1");
+  const date2 = query.get("date2");
 
   useEffect(() => {
-    Getid().then(e => GetMenu(e).then(() => setLoading(false)))
-  })
+    async function Getid() {
+      let t = await list_menu(date1, date2)
+      setMenus(t);
+      return t.length;
+    }
+    Getid().then(l => {
+      setLoading(false);
+      if (l === 0) {
+        alert("aucun menu existe pour l'interval donné.")
+      }
+    }).catch(err => {})
+  }, [date1, date2])
+
+  useEffect(() => {
+    async function GetMenu() {
+      setPlats(await plat_menu(menus[idMenu].idMenu)) 
+    }
+    if (menus.length > idMenu) {
+      GetMenu()
+      setDate(menus[idMenu].date)
+    }
+  }, [menus, idMenu])
+
+  function changeMenu(offset) {
+    const newOff = idMenu + offset;
+    if (newOff < 0 || newOff >= menus.length)
+      alert('Date hors limite')
+    else {
+      setIdMenu(newOff)
+    }
+  }
 
   return (
       <div className='page'>
@@ -71,14 +62,7 @@ export default function MenuBetween () {
           
           <div className='LesMenus'>
               <div className='haja'>
-                <button onClick={()=>{
-                    if (new Date(dateMenu).getTime() < new Date(date1).getTime()+(1000 * 60 *60 *24)){
-                      alert('Date hors limite')
-                    }else{
-                      getPreviousDate()
-                    }
-                  
-                  }}>
+                <button onClick={()=> changeMenu(-1)}>
                   <img src={left} alt="left" />
                 </button> 
               </div>
@@ -88,22 +72,15 @@ export default function MenuBetween () {
                 }
               </div>
               <div className='haja' >
-                <button onClick={()=>{
-                  if (new Date(dateMenu).getTime() > new Date(date2).getTime()-(1000 * 60 *60 *24)){
-                    alert('Date hors limite')
-                  }else{
-                    getNextDate()
-                  }
-                  
-                  }}>
-                  <img src={right} alt="left" />
+                <button onClick={()=> changeMenu(+1)}>
+                  <img src={right} alt="right" />
                 </button> 
               </div>
                 
           </div>
           <div className = 'SecondTitle'>
               
-              <h1> {dateMenu}</h1>
+              <h1> {new Date(dateMenu).toUTCString()}</h1>
 
           </div>
       </div>
