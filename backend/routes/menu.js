@@ -23,7 +23,6 @@ router.get('/', (req, res) => {
     //menus entre deux date
 
     connection.query(menubtw(req.query.date1, req.query.date2), (err, results) => {
-        console.log(req.query.date)
         if (err) {
             res.status(400);
             res.json({ err })

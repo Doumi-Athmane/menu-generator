@@ -4,7 +4,7 @@ import NavBar from './components/navBar'
 import Generer from './components/generer'
 import Plats from './components/plats'
 import Login from './components/login'
-import ProtectedRoute from "./components/protectedRoute"
+//import ProtectedRoute from "./components/protectedRoute"
 import { 
   BrowserRouter as Router, 
   Route, 

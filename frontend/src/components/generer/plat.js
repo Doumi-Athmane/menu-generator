@@ -7,7 +7,6 @@ function Plat({plat}) {
     const [ingrediants, setIngrediants] = useState([])
 
     useEffect(() => {
-        console.log(plat)
         async function fetchData() {
             const t = await getIngs(plat.idPlat);
             setIngrediants(t);

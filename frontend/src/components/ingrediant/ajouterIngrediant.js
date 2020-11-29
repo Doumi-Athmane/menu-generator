@@ -36,6 +36,10 @@ class ajouterIngrediant extends Component {
                 <div className='btnAjouter'>
                     <AjouterBtn label ='Ajouter' 
                         onClick= {() =>{
+                            if (this.state.nom === "") {
+                                alert("le nom est vide.")
+                                return
+                            }
                             ajouter_ingrediant(this.state.nom)
                             .then(e => {this.setState({ nom: ""});this.props.refresh()})
                             .catch(e => console.log(e))

@@ -14,14 +14,16 @@
     margin: 0;
 }
 
-.ingrediant a {
-    width: 20px;
-    height: 20px;
+.ingrediant button {
     margin-right: 50px;
+    padding: 5px;
+    background-color: unset;
+    outline: unset;
+    border: unset;
+    cursor: pointer;
 }
 
-.ingrediant a img {
+.ingrediant button img {
     width: 20px;
     height: 20px;
-    cursor: pointer;
 }

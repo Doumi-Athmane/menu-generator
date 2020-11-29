@@ -119,7 +119,7 @@ route.post('/', (req, res) => {
 route.put('/:id', (req, res) => {
     const { id } = req.params;
     const { nom, prix, type, choix, fixe, ingrediants } = req.body;
-    console.log(req.body)
+    
     connection.query(modifier({id, nom, prix, fixe, type, choix, ingrediants}), (err, results) => {
         if (err) {
             console.log(err)

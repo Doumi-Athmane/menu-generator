@@ -19,7 +19,8 @@ export default class NavBar extends Component {
         this.props = props;
         this.state = {
             redirect: false,
-            closed: true
+            closed: true,
+            closing: false
         }
 
         this.performLogout = this.performLogout.bind(this)
@@ -33,6 +34,10 @@ export default class NavBar extends Component {
 
     toggleNav() {
         this.setState({ closed: !this.state.closed })
+        
+        setTimeout(() => {
+            this.setState({ closing: !this.state.closing })
+        }, 300)
     }
 
     render() {
@@ -54,8 +59,8 @@ export default class NavBar extends Component {
                 </div>
                 <div className="test">
                     <button onClick={this.toggleNav}><img src={menu} alt="menu" /></button>
-                    {/* <div className="backdoor"></div> */}
                 </div>
+                {this.state.closing?(<div className="backdoor" onClick={this.toggleNav}></div>):null}
             </div>
         )
     }

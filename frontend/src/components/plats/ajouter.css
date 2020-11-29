@@ -43,6 +43,9 @@ div.ReactTags__tags {
     align-self: stretch;
 }
 
+.error {
+    color: red;
+}
 
 /* Styles for the input */
 

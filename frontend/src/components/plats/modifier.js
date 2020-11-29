@@ -12,11 +12,13 @@ function Modifier({plat, refresh}) {
     const [tags, setTags] = useState([]);
     const [suggestions, setSuggestions] = useState([]);
     const [nom, setNom] = useState(plat.nom)
+    const [errorNom, setErrorNom] = useState(false)
     const [type, setType] = useState(plat.type)
-    const [prix, setPrix] = useState(plat.prix)
+    const [prix, setPrix] = useState(plat.prix.toString())
+    const [errorPrix, setErrorPrix] = useState(false)
     const [choixPrincipal, setChoixPrincipal] = useState(plat.type==="principal"?plat.choix:"poulet")
     const [choixEntree, setChoixEntree] = useState(plat.type==="entree"?plat.choix+"":"null")
-    //console.log(choix)
+    const [errorChoix, setErrorChoix] = useState(false)
     const [fixe, setFixe] = useState(!!plat.fixe)
     const [estPrincipal, setEstPrincipal] = useState(plat.type === "principal")
     const [estEntree, setEstEntree] = useState(plat.type === "entree")
@@ -55,7 +57,24 @@ function Modifier({plat, refresh}) {
     }
 
     async function modifier() {
-        
+        setErrorNom(false)
+        setErrorPrix(false)
+        setErrorChoix(false)
+        let proceed = true;
+        if (nom === "") {
+            setErrorNom(true)
+            proceed = false;
+        }
+        if (prix === "" || !prix.match(/^[0-9]+$/i)) {
+            setErrorPrix(true)
+            proceed = false;
+        }
+        if(type === "entree" && choixEntree+"" === "null" && !fixe) {
+            setErrorChoix(true)
+            proceed = false;
+        }
+        if (!proceed)
+            return;
         let data = {
             id: plat.idPlat,
             nom, 
@@ -65,9 +84,7 @@ function Modifier({plat, refresh}) {
             choix: type === "entree"?choixEntree:choixPrincipal,
             ingrediants: tags.map(e => e.key),
         };
-
-        console.log(data);
-
+        console.log(data)
         modifierPlat(data)
         .then(e => {
             refresh()
@@ -83,6 +100,7 @@ function Modifier({plat, refresh}) {
         <div className="addplat">
             <h3 id="titre">Modifier un plat</h3>
             <input type="text" placeholder="nom Plat" id="nom" onChange={e => setNom(e.target.value)} value={nom} />
+            {errorNom?(<label className="error">ce nom n'est pas valide.</label>):null}
             <select placeholder="Type" id="droplist" onChange={e => {
                 setEstPrincipal(e.target.value === "principal")
                 setEstEntree(e.target.value === "entree")
@@ -106,7 +124,7 @@ function Modifier({plat, refresh}) {
              }
 
             {estEntree? 
-                (<select 
+                (<><select 
                 placeholder="Choix" 
                 id="droplist2" 
                 onChange={e => {
@@ -121,12 +139,12 @@ function Modifier({plat, refresh}) {
                             <option value="salé">Salé</option>
                             <option value="gratin">Gratin</option>
 
-                </select>) : null 
+                </select>
+                {errorChoix?(<label className="error">fixe est exigée si le type est null</label>):null}
+                </>) : null 
             }
-            
-            
-
             <input type="text" placeholder="Prix" id="prix" onChange={e => setPrix(e.target.value)} value={prix} />
+            {errorPrix?(<label className="error">le prix doit etre un nombre</label>):null}
             <div>
                 <label>fixe </label>
                 <input type="checkbox" onChange={e => {
